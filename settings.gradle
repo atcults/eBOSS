@@ -1,4 +1,5 @@
 rootProject.name = 'eboss'
 include 'core'
 include 'api'
+include 'common'
 
