@@ -1,4 +1,4 @@
-group 'org.sanelib'
+group 'org.sanelib.eboss.core'
 version '0.1'
 
 apply plugin: 'java'
