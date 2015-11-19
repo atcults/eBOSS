@@ -1,0 +1,9 @@
+name: Production
+version: 0.1
+releaseDate: 1/1/2005
+locale: EN
+messageBundle: properties
+
+server:
+  port: 8080
+  context-path: /api

@@ -1,14 +1,11 @@
-group 'org.sanelib.eboss.core'
-version '0.1'
+description = 'eBOSS Core'
 
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
+jar {
+    baseName = 'core'
+    mainClassName = 'CoreMain'
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile project(':common')
+
 }

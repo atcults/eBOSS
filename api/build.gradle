@@ -1,17 +1,13 @@
-group 'org.sanelib.eboss.api'
-version '0.1'
+description = 'API Server'
 
-apply plugin: 'java'
 apply plugin: 'war'
 
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
+war {
+    baseName = 'api'
 }
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter'
+    compile project(':common')
     compile 'org.springframework.boot:spring-boot-starter-jersey'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }

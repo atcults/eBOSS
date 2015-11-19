@@ -1,0 +1,10 @@
+name: Test
+version: 0.1
+releaseDate: 1/1/2005
+locale: EN
+messageBundle: yml
+
+server:
+  port: 8090
+  context-path: /api
+
