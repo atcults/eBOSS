@@ -1,0 +1,6 @@
+homeUrl: www.sanelib.com
+welcome: Welcome to Sanelib
+
+field:
+  required: This field is required (y)
+  invalid: this filed is invalid (y)

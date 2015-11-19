@@ -1,16 +1,13 @@
-group 'org.sanelib'
-version '0.1'
+description = 'API Server'
 
-apply plugin: 'java'
+apply plugin: 'war'
 
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
+war {
+    baseName = 'api'
 }
 
 dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.2.6.RELEASE'
-
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile project(':common')
+    compile 'org.springframework.boot:spring-boot-starter-jersey'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 }

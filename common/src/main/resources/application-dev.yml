@@ -1,0 +1,9 @@
+name: Development
+version: 0.1
+releaseDate: 1/1/2005
+locale: EN
+messageBundle: properties
+
+server:
+  port: 8070
+  context-path: /api

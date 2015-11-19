@@ -1,16 +1,11 @@
-group 'org.sanelib'
-version '0.1'
+description = 'eBOSS Core'
 
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
+jar {
+    baseName = 'core'
+    mainClassName = 'CoreMain'
 }
 
 dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.2.6.RELEASE'
+    compile project(':common')
 
-    testCompile group: 'junit', name: 'junit', version: '4.11'
 }

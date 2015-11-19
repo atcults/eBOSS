@@ -1,16 +1,48 @@
-group 'org.sanelib'
-version '0.1'
+//Refer: https://www.credera.com/blog/technology-insights/java/gradle-profiles-for-multi-project-spring-boot-applications/
 
-apply plugin: 'groovy'
-apply plugin: 'java'
+description = 'eBOSS Root'
 
-sourceCompatibility = 1.8
+buildscript {
 
-repositories {
-    mavenCentral()
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE")
+    }
 }
 
-dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.11'
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+allprojects {
+    group = 'org.sanelib.eboss'
+    version = '0.0.1-SNAPSHOT'
+
+    apply plugin: 'idea'
+
+    task wrapper(type: Wrapper) {
+        gradleVersion = '2.9'
+    }
 }
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'spring-boot'
+    apply plugin: 'groovy'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'org.codehaus.groovy:groovy:2.4.5'
+        compile 'com.google.guava:guava:19.0-rc2'
+        testCompile 'org.springframework.boot:spring-boot-starter-test'
+    }
+}
+
+apply from: rootProject.file('gradle/profiles.gradle ');
