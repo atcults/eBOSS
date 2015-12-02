@@ -12,16 +12,17 @@ server:
 
 # Database
 db:
-  driver: com.mysql.jdbc.Driver
-  url: jdbc:mysql://localhost:8889/netgloo_blog
-  username: root
-  password: root
+  driver: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5439/postgres
+  username: postgres
+  password: admin
 
 # Hibernate
 hibernate:
-  dialect: org.hibernate.dialect.MySQL5Dialect
+  dialect: org.hibernate.dialect.PostgreSQL82Dialect
   show_sql: true
   hbm2ddl.auto: update
+
 
 # Entity Manager
 entitymanager:
