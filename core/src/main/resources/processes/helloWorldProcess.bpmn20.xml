@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema"
+             expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef"
+             xmlns:modeler="http://activiti.com/modeler" modeler:version="1.0ev" modeler:exportDateTime="20151211042533"
+             modeler:modelId="968543" modeler:modelVersion="1" modeler:modelLastUpdated="1449807881967">
+    <process id="helloWorldProcess" name="helloWorldProcess" isExecutable="true">
+        <documentation>This is basic Hello World Process</documentation>
+        <startEvent id="startDemoProcess" name="start"/>
+        <sequenceFlow id="sid-58CEA65D-CB0B-49CE-B48C-D1E99EDC6E28" sourceRef="startDemoProcess" targetRef="firstProcessID"/>
+        <serviceTask id="firstProcessID" name="firstProcess" activiti:class="org.sanelib.eboss.core.activities.demo.FirstProcessDelegate"/>
+        <sequenceFlow id="sid-9B2E3492-26CA-40A3-A8CB-74E1302888A3" sourceRef="firstProcessID" targetRef="secondProcessID"/>
+        <serviceTask id="secondProcessID" name="secondProcess"
+                     activiti:class="org.sanelib.eboss.core.activities.demo.SecondProcessDelegate"/>
+        <endEvent id="endProcessID" name="end"/>
+        <sequenceFlow id="sid-78877653-D15F-47F3-91D3-921D9E76438B" sourceRef="secondProcessID" targetRef="endProcessID"/>
+    </process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_helloWorldProcess">
+        <bpmndi:BPMNPlane bpmnElement="helloWorldProcess" id="BPMNPlane_helloWorldProcess">
+            <bpmndi:BPMNShape bpmnElement="startDemoProcess" id="BPMNShape_startDemoProcess">
+                <omgdc:Bounds height="30.0" width="30.0" x="90.0" y="150.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="firstProcessID" id="BPMNShape_firstProcessID">
+                <omgdc:Bounds height="80.0" width="100.0" x="165.0" y="125.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="secondProcessID" id="BPMNShape_secondProcessID">
+                <omgdc:Bounds height="80.0" width="100.0" x="300.0" y="120.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="endProcessID" id="BPMNShape_endProcessID">
+                <omgdc:Bounds height="28.0" width="28.0" x="445.0" y="146.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="sid-9B2E3492-26CA-40A3-A8CB-74E1302888A3" id="BPMNEdge_sid-9B2E3492-26CA-40A3-A8CB-74E1302888A3">
+                <omgdi:waypoint x="265.0" y="163.14814814814815"/>
+                <omgdi:waypoint x="300.0" y="161.85185185185185"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="sid-58CEA65D-CB0B-49CE-B48C-D1E99EDC6E28" id="BPMNEdge_sid-58CEA65D-CB0B-49CE-B48C-D1E99EDC6E28">
+                <omgdi:waypoint x="120.0" y="165.0"/>
+                <omgdi:waypoint x="165.0" y="165.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="sid-78877653-D15F-47F3-91D3-921D9E76438B" id="BPMNEdge_sid-78877653-D15F-47F3-91D3-921D9E76438B">
+                <omgdi:waypoint x="400.0" y="160.0"/>
+                <omgdi:waypoint x="445.0" y="160.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</definitions>

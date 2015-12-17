@@ -38,6 +38,10 @@ public class UnitOfWork {
 	}
 
 	public void rollback() {
+		if(this.currentTransaction == null){
+			return;
+		}
+
 		this.currentTransaction.rollback();
 	}
 }
