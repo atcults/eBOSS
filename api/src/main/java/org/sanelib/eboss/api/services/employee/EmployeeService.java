@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -43,5 +44,11 @@ public class EmployeeService extends ApiServiceBase {
         execute(employeeDTO, "helloWorldProcess");
 
         return dtos;
+    }
+
+    @POST
+    public Integer addEmployee(EmployeeDTO employeeDTO) throws Exception {
+        execute(employeeDTO, "helloWorldProcess");
+        return 0;
     }
 }
