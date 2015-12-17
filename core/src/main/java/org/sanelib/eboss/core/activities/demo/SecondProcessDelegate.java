@@ -2,7 +2,9 @@ package org.sanelib.eboss.core.activities.demo;
 
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.JavaDelegate;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SecondProcessDelegate implements JavaDelegate {
 
 	@Override

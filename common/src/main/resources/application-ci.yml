@@ -24,3 +24,6 @@ hibernate:
   hbm2ddl.auto: update
 
 
+# Entity Manager
+entitymanager:
+  packagesToScan: org.sanelib.eboss.core

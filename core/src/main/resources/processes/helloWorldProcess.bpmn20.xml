@@ -10,10 +10,10 @@
         <documentation>This is basic Hello World Process</documentation>
         <startEvent id="startDemoProcess" name="start"/>
         <sequenceFlow id="sid-58CEA65D-CB0B-49CE-B48C-D1E99EDC6E28" sourceRef="startDemoProcess" targetRef="firstProcessID"/>
-        <serviceTask id="firstProcessID" name="firstProcess" activiti:class="org.sanelib.eboss.core.activities.demo.FirstProcessDelegate"/>
+        <serviceTask id="firstProcessID" name="firstProcess" activiti:delegateExpression="${firstProcessDelegate}"/>
         <sequenceFlow id="sid-9B2E3492-26CA-40A3-A8CB-74E1302888A3" sourceRef="firstProcessID" targetRef="secondProcessID"/>
         <serviceTask id="secondProcessID" name="secondProcess"
-                     activiti:class="org.sanelib.eboss.core.activities.demo.SecondProcessDelegate"/>
+                     activiti:delegateExpression="${secondProcessDelegate}"/>
         <endEvent id="endProcessID" name="end"/>
         <sequenceFlow id="sid-78877653-D15F-47F3-91D3-921D9E76438B" sourceRef="secondProcessID" targetRef="endProcessID"/>
     </process>
