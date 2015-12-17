@@ -5,6 +5,9 @@ import org.activiti.engine.TaskService;
 import org.sanelib.eboss.api.dto.BaseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ApiServiceBase {
 
     @Autowired
@@ -14,7 +17,9 @@ public class ApiServiceBase {
     TaskService taskService;
 
     public void execute(BaseDTO dto, String processKey) throws Exception {
-        runtimeService.startProcessInstanceByKey(processKey);
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("dto", dto);
+        runtimeService.startProcessInstanceByKey(processKey, variables);
     }
 
 }

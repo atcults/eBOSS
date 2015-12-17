@@ -1,6 +1,11 @@
 package org.sanelib.eboss.api.dto;
 
-public class BaseDTO{
+import java.io.Serializable;
+
+public class BaseDTO implements Serializable {
+
+    private static final long serialVersionUID = 7526472295622776147L;
+
     public String getId() {
         return id;
     }

@@ -34,13 +34,14 @@ public class EmployeeService extends ApiServiceBase {
     @GET
     public List<EmployeeDTO> getAllEmployees() throws Exception {
 
-        execute(null, "helloWorldProcess");
-
         List<EmployeeDTO> dtos = new ArrayList<>();
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.setFirstName("first name");
         employeeDTO.setLastName("last name");
         dtos.add(employeeDTO);
+
+        execute(employeeDTO, "helloWorldProcess");
+
         return dtos;
     }
 }
