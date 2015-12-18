@@ -8,7 +8,7 @@ import java.util.Date;
 import org.sanelib.eboss.core.commands.employee.AddEmployee;
 import org.sanelib.eboss.core.dao.EmployeeRepository;
 import org.sanelib.eboss.core.domain.entity.Employee;
-import org.sanelib.eboss.core.exceptions.DomainProcessException;
+import org.sanelib.eboss.core.exceptions.AppException;
 import org.sanelib.eboss.core.processors.IProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class AddEmployeeProcessor implements IProcessor<AddEmployee, Long> {
 	private EmployeeRepository employeeRepository;
 
 	@Override
-	public Long Process(AddEmployee command) throws DomainProcessException {
+	public Long Process(AddEmployee command) throws AppException {
 
 		Employee entity = new Employee();
 		entity.setEmpId(Long.valueOf(command.getEmployeeId()));
