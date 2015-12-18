@@ -13,8 +13,7 @@ import java.util.Date;
 public class ISO8601JsonDateDeserializer extends JsonDeserializer<Date> {
 
 	@Override
-	public Date deserialize(JsonParser jsonparser, DeserializationContext context)
-			throws IOException, JsonProcessingException {
+	public Date deserialize(JsonParser jsonparser, DeserializationContext context) throws IOException {
 		
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         String date = jsonparser.getText();
