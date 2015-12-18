@@ -9,7 +9,10 @@ war {
 dependencies {
     compile project(':common')
     compile project(':core')
-    
+
+    compile 'org.codehaus.jackson:jackson-jaxrs:1.9.13'
+
     compile 'org.springframework.boot:spring-boot-starter-jersey'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
+
 }
