@@ -33,8 +33,12 @@ public class UnitOfWork {
 	}
 
 	public void commit() {
-		this.currentTransaction.commit();
-		this.currentSession.close();
+		try{
+            this.currentTransaction.commit();
+            this.currentSession.close();
+        } catch (Exception ex){
+            System.out.println(ex);
+        }
 	}
 
 	public void rollback() {
