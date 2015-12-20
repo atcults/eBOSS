@@ -3,12 +3,20 @@ package org.sanelib.eboss.api.dto.employee;
 import org.sanelib.eboss.api.dto.BaseDTO;
 
 public class EmployeeDTO extends BaseDTO {
-
+    private String employeeId;
     private String firstName;
     private String lastName;
     private String gender;
     private String dateOfBirth;
     private String dateOfJoining;
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -53,7 +61,8 @@ public class EmployeeDTO extends BaseDTO {
     @Override
     public String toString() {
         return "EmployeeDTO{" +
-                "firstName='" + firstName + '\'' +
+                "employeeId='" + employeeId + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +

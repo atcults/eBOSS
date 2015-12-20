@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema"
+             expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef"
+             xmlns:modeler="http://activiti.com/modeler" modeler:version="1.0ev" modeler:exportDateTime="20151211042533"
+             modeler:modelId="968543" modeler:modelVersion="1" modeler:modelLastUpdated="1449807881967">
+    <process id="addEmployeeProcess" name="addEmployeeProcess" isExecutable="true">
+        <documentation>To process add employee command</documentation>
+        <startEvent id="startAddEmployeeProcess" name="start"/>
+        <sequenceFlow id="sid-58CEA65D-CB0B-49CE-B48C-D1E99EDC6E28" sourceRef="startAddEmployeeProcess" targetRef="checkEmployeeDuplicationID"/>
+        <serviceTask id="checkEmployeeDuplicationID" name="checkEmployeeDuplication" activiti:delegateExpression="${checkEmployeeDuplicationDelegate}"/>
+        <sequenceFlow id="sid-9B2E3492-26CA-40A3-A8CB-74E1302888A3" sourceRef="checkEmployeeDuplicationID" targetRef="processAddEmployeeID"/>
+        <serviceTask id="processAddEmployeeID" name="processAddEmployeeProcess" activiti:delegateExpression="${processAddEmployeeDelegate}"/>
+        <endEvent id="endProcessID" name="end"/>
+        <sequenceFlow id="sid-78877653-D15F-47F3-91D3-921D9E76438B" sourceRef="processAddEmployeeID" targetRef="endProcessID"/>
+    </process>
+</definitions>

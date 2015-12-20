@@ -3,7 +3,6 @@ package org.sanelib.eboss.api.services.employee;
 import org.activiti.engine.RuntimeService;
 import org.sanelib.eboss.api.dto.employee.EmployeeDTO;
 import org.sanelib.eboss.api.services.ApiServiceBase;
-import org.sanelib.eboss.core.activities.demo.FirstProcessDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -27,24 +26,23 @@ public class EmployeeService extends ApiServiceBase {
     ApplicationContext applicationContext;
 
     @Autowired
-    FirstProcessDelegate firstProcessDelegate;
-
-    @Autowired
     RuntimeService runtimeService;
 
     @GET
     public List<EmployeeDTO> getAllEmployees() throws Exception {
-
         List<EmployeeDTO> dtos = new ArrayList<>();
         EmployeeDTO employeeDTO = new EmployeeDTO();
+        employeeDTO.setEmployeeId("EMP001");
         employeeDTO.setFirstName("first name");
         employeeDTO.setLastName("last name");
+        employeeDTO.setDateOfJoining("2015-12-31");
+        employeeDTO.setDateOfBirth("1991-01-01");
         dtos.add(employeeDTO);
         return dtos;
     }
 
     @POST
     public String addEmployee(EmployeeDTO employeeDTO) throws Exception {
-        return execute(employeeDTO, "helloWorldProcess");
+        return execute(employeeDTO, "addEmployeeProcess");
     }
 }
