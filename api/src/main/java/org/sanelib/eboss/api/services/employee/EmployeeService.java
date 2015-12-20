@@ -40,15 +40,11 @@ public class EmployeeService extends ApiServiceBase {
         employeeDTO.setFirstName("first name");
         employeeDTO.setLastName("last name");
         dtos.add(employeeDTO);
-
-        execute(employeeDTO, "helloWorldProcess");
-
         return dtos;
     }
 
     @POST
-    public Integer addEmployee(EmployeeDTO employeeDTO) throws Exception {
-        execute(employeeDTO, "helloWorldProcess");
-        return 0;
+    public String addEmployee(EmployeeDTO employeeDTO) throws Exception {
+        return execute(employeeDTO, "helloWorldProcess");
     }
 }

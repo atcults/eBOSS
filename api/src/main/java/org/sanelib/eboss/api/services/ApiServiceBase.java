@@ -21,13 +21,17 @@ public abstract class ApiServiceBase {
     @Autowired
     UnitOfWork unitOfWork;
 
-    protected void execute(BaseDTO dto, String processKey) {
+    protected String execute(BaseDTO dto, String processKey) {
         Map<String, Object> variables = new HashMap<>();
         variables.put("dto", dto);
-
+        String response = null;
         try {
             unitOfWork.begin();
             ProcessInstance instance = runtimeService.startProcessInstanceByKey(processKey, variables);
+            Map<String, Object> processedVariables = instance.getProcessVariables();
+            if(processedVariables.containsKey("result")){
+                response = processedVariables.get("result").toString();
+            }
             System.out.println(instance.getId());
             unitOfWork.commit();
         } catch (Exception exception){
@@ -35,6 +39,7 @@ public abstract class ApiServiceBase {
             unitOfWork.rollback();
         }
 
+        return response;
     }
 
 }
