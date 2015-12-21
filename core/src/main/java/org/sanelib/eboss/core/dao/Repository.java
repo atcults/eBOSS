@@ -50,13 +50,13 @@ public abstract class Repository<T extends IEntity> implements IRepository<T> {
 
 	@Override
 	public T load(final long id) {
-		return getSession().load(entityClass, id);
+		return (T) getSession().load(entityClass, id);
 
 	}
 
 	@Override
 	public T get(final long id) {
-		return getSession().get(entityClass, id);
+		return (T) getSession().get(entityClass, id);
 	}
 
 	@Override

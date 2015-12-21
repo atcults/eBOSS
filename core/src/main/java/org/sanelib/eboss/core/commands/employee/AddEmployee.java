@@ -1,8 +1,8 @@
 package org.sanelib.eboss.core.commands.employee;
 
-import org.sanelib.eboss.core.commands.ICommand;
+import org.sanelib.eboss.core.commands.ProcessCommand;
 
-public class AddEmployee implements ICommand {
+public class AddEmployee implements ProcessCommand {
 
 	private Integer employeeId;
 	private String firstName;
@@ -59,7 +59,6 @@ public class AddEmployee implements ICommand {
 		this.dateOfJoining = dateOfJoining;
 	}
 
-	@Override
 	public String getAggregateId() {
 		return null;
 	}
