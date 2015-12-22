@@ -4,18 +4,18 @@ import org.sanelib.eboss.core.commands.ProcessCommand;
 
 public class AddEmployee implements ProcessCommand {
 
-	private Integer employeeId;
+	private String employeeId;
 	private String firstName;
 	private String lastName;
 	private String gender;
 	private String dateOfBirth;
 	private String dateOfJoining;
 
-	public Integer getEmployeeId() {
+	public String getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(Integer employeeId) {
+	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
 
