@@ -28,7 +28,7 @@ public class ProcessAddEmployeeDelegateTest {
         Mockito.doNothing().when(employeeRepositoryMock).save(Mockito.isA(Employee.class));
 
         AddEmployee addEmployeeCommand = new AddEmployee();
-        addEmployeeCommand.setEmployeeId(101);
+        addEmployeeCommand.setEmployeeId("101");
         addEmployeeCommand.setDateOfBirth("03/02/1990");
         addEmployeeCommand.setDateOfJoining("16/01/2018");
         addEmployeeCommand.setGender("M");

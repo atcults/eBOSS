@@ -12,7 +12,7 @@ public class EmployeeDTOConverter implements DtoToCommandConverter<EmployeeDTO> 
     @Override
     public ProcessCommand convert(EmployeeDTO dto) {
         AddEmployee command = new AddEmployee();
-        command.setEmployeeId(Integer.valueOf(dto.getEmployeeId()));
+        command.setEmployeeId(dto.getEmployeeId());
         command.setFirstName(dto.getFirstName());
         command.setLastName(dto.getLastName());
         command.setGender(dto.getGender());
