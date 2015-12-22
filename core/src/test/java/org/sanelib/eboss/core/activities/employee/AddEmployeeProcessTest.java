@@ -1,12 +1,13 @@
-package org.sanelib.eboss.core.processors.activities.demo;
+package org.sanelib.eboss.core.activities.employee;
 
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.junit.Test;
 import org.sanelib.eboss.core.IntegrationTestBase;
+import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class DemoProcessTest extends IntegrationTestBase {
+public class AddEmployeeProcessTest extends IntegrationTestBase {
 
 	@Autowired
 	RuntimeService runtimeService;
@@ -16,6 +17,6 @@ public class DemoProcessTest extends IntegrationTestBase {
 
 	@Test
 	public void testHelloWorldProcessTest() throws Exception {
-		runtimeService.startProcessInstanceByKey("helloWorldProcess");
+		runtimeService.startProcessInstanceByKey(ActivitiProcessConstants.Admin.ADD_EMPLOYEE_PROCESS);
 	}
 }

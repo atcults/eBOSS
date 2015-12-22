@@ -2,7 +2,9 @@ package org.sanelib.eboss.api.services.employee;
 
 import org.activiti.engine.RuntimeService;
 import org.sanelib.eboss.api.dto.employee.EmployeeDTO;
+import org.sanelib.eboss.api.services.ApiEndPointConstants;
 import org.sanelib.eboss.api.services.ApiServiceBase;
+import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -16,11 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Path(EmployeeService.URL)
+@Path(ApiEndPointConstants.Admin.EMPLOYEE_END_POINT)
 @Produces(MediaType.APPLICATION_JSON)
 public class EmployeeService extends ApiServiceBase {
-
-    public static final String URL = "/employee";
 
     @Autowired
     ApplicationContext applicationContext;
@@ -43,6 +43,6 @@ public class EmployeeService extends ApiServiceBase {
 
     @POST
     public String addEmployee(EmployeeDTO employeeDTO) throws Exception {
-        return execute(employeeDTO, "addEmployeeProcess");
+        return execute(employeeDTO, ActivitiProcessConstants.Admin.ADD_EMPLOYEE_PROCESS);
     }
 }
