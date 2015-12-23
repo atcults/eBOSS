@@ -1,0 +1,18 @@
+{
+  "id": "1",
+  "code": "E001",
+  "firstName": "John",
+  "middleName": "I",
+  "lastName": "Smith",
+  "line1": "524, linkin road",
+  "line2": "",
+  "city": "Dallas",
+  "state": "Texas",
+  "country": "USA",
+  "pinCode": 380001,
+  "phone": "(+91)-9974147641",
+  "email": "john.smith@gmail.com",
+  "gender": "Male",
+  "dateOfJoining": "2015/12/01",
+  "isActive": true
+}

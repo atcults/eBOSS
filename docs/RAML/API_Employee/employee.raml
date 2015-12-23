@@ -1,0 +1,96 @@
+#%RAML 0.8
+title: Employee
+version: 1
+mediaType: application/json
+baseUri: http://mocksvc.mulesoft.com/mocks/9e16dcfb-2438-4a1b-9a9d-d36c88fae4d8
+/employee:
+  description: List of Employees registered in eBOSS application
+  displayName: Employee
+  get:
+    description: Fetches the list of Employees.
+    responses:
+      200: 
+        body:
+          application/json:
+            example: !include responses/employeeList.json
+  post:
+    description: Create new employee
+    body:
+      application/json:
+        schema: !include EmployeeSchema.json
+        example: !include responses/employeeProfile.json
+    responses:
+      201:
+        body:
+          application/json:
+            example: |
+              {
+                "message":"Employee Created Successfully."
+              }
+      400: 
+        body:
+          application/json:
+            example: |
+              {
+                "message":"Sorry! Failed employee creation. Please try again."
+              }
+              
+  /{employeeID}:
+    description: By Id employee CRUD operation
+    uriParameters:
+      employeeID:
+        displayName: Employee Id
+        type: integer
+        description: A employee from all employees list        
+    get:
+      description: Gets the information of the particular employee. It Will be used in "View Profile" functionality.
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include responses/employeeProfile.json
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "error": "query parameter employeeId is required"
+                }
+    put:
+      description: Update the employee information.
+      body:
+        application/json:
+          schema: !include EmployeeSchema.json
+          example: !include responses/employeeProfile.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "message":"Employee updated successfully."
+                }
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "error": "query parameter employeeId is required"
+                }
+    delete:
+      description: Delete this particular employee.
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "message": "employee deleted successfully."
+                }
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "error": "query parameter employeeId is required"
+                }

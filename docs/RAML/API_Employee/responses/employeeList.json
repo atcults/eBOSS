@@ -1,0 +1,24 @@
+{
+  [
+    {
+      "id":1254,
+      "employee":"http://www.sanelib.com/api/employee/1254"
+    },
+    {
+      "id":3311,
+      "employee":"http://www.sanelib.com/api/employee/3311"
+    },
+    {
+      "id":7823,
+      "employee":"http://www.sanelib.com/api/employee/7823"
+    },
+    {
+      "id":9985,
+      "employee":"http://www.sanelib.com/api/employee/9985"
+    },
+    {
+      "id":3456,
+      "employee":"http://www.sanelib.com/api/employee/3456"
+    }
+  ]
+}
