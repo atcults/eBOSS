@@ -8,18 +8,11 @@ import org.sanelib.eboss.core.domain.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
-
 @Component
 public class ProcessAddEmployeeDelegate implements JavaDelegate {
 
     @Autowired
     EmployeeRepository employeeRepository;
-
 
     @Override
 	public void execute(DelegateExecution execution) throws Exception {
@@ -28,32 +21,23 @@ public class ProcessAddEmployeeDelegate implements JavaDelegate {
         AddEmployee command = (AddEmployee) execution.getVariable("command");
 
         Employee entity = new Employee();
-        entity.setEmpId(Long.valueOf(command.getEmployeeId()));
+        entity.setCode(command.getCode());
         entity.setFirstName(command.getFirstName());
+        entity.setMiddleName(command.getMiddleName());
         entity.setLastName(command.getLastName());
+        entity.setDateOfBirth(command.getDateOfBirth());
+        entity.setAddressLine1(command.getAddressLine1());
+        entity.setAddressLine2(command.getAddressLine2());
+        entity.setCity(command.getCity());
+        entity.setState(command.getState());
+        entity.setCountry(command.getCountry());
+        entity.setZipCode(command.getZipCode());
+        entity.setPhone(command.getPhone());
+        entity.setEmail(command.getEmail());
         entity.setGender(command.getGender());
-
-/*
-        Timestamp joinDate = null, birthDate = null;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-
-        try {
-            Date birthDateParsed = dateFormat.parse(command.getDateOfBirth());
-            Date joinDateParsed = dateFormat.parse(command.getDateOfJoining());
-
-            birthDate = new Timestamp(birthDateParsed.getTime());
-            joinDate = new Timestamp(joinDateParsed.getTime());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        entity.setDateOfBirth(birthDate);
-        entity.setDateOfJoining(joinDate);
-*/
-
+        entity.setDateOfJoining(command.getDateOfJoining());
+        entity.setIsActive(command.getIsActive());
         employeeRepository.save(entity);
-
         execution.setVariable("result", entity.getId());
-
 	}
 }

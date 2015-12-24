@@ -1,6 +1,7 @@
 package org.sanelib.eboss.api.services.employee;
 
 import org.activiti.engine.RuntimeService;
+import org.activiti.engine.impl.test.TestHelper;
 import org.sanelib.eboss.api.dto.employee.EmployeeDTO;
 import org.sanelib.eboss.api.services.ApiEndPointConstants;
 import org.sanelib.eboss.api.services.ApiServiceBase;
@@ -32,11 +33,21 @@ public class EmployeeService extends ApiServiceBase {
     public List<EmployeeDTO> getAllEmployees() throws Exception {
         List<EmployeeDTO> dtos = new ArrayList<>();
         EmployeeDTO employeeDTO = new EmployeeDTO();
-        employeeDTO.setEmployeeId("EMP001");
+        employeeDTO.setCode("EMP001");
         employeeDTO.setFirstName("first name");
         employeeDTO.setLastName("last name");
-        employeeDTO.setDateOfJoining("2015-12-31");
-        employeeDTO.setDateOfBirth("1991-01-01");
+        employeeDTO.setDateOfBirth("1990/1/1");
+        employeeDTO.setAddressLine1("7,Shakti Park Soc");
+        employeeDTO.setAddressLine2("College Road");
+        employeeDTO.setCity("Nadiad");
+        employeeDTO.setState("Gujarat");
+        employeeDTO.setCountry("India");
+        employeeDTO.setZipCode("387001");
+        employeeDTO.setPhone("9876543210");
+        employeeDTO.setEmail("fname@gmail.com");
+        employeeDTO.setGender("Male");
+        employeeDTO.setDateOfJoining("2015/7/1");
+        employeeDTO.setIsActive(true);
         dtos.add(employeeDTO);
         return dtos;
     }
