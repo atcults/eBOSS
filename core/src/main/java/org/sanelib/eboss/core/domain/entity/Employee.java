@@ -1,9 +1,11 @@
 package org.sanelib.eboss.core.domain.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Date;
 
+@Entity
 @Table(name = "employee")
 public class Employee extends BaseEntity {
 
