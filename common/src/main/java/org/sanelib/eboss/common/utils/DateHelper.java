@@ -1,6 +1,7 @@
 package org.sanelib.eboss.common.utils;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,16 +15,16 @@ public class DateHelper {
     private static final String dateFormatPattern = "yyyy/MM/dd";
 
     public static Date fromDateTimeString(String dateTimeString) {
-        final DateTimeFormatter formatter =
-                DateTimeFormatter.ofPattern(dateTimeFormatPattern);
-        final ZonedDateTime zonedDateTime = ZonedDateTime.parse(dateTimeString, formatter);
+        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateTimeFormatPattern);
+        final LocalDate date = LocalDate.parse(dateTimeString, formatter);
+        final ZonedDateTime zonedDateTime = date.atStartOfDay(ZoneId.systemDefault());
         return Date.from(zonedDateTime.toInstant());
     }
 
     public static Date fromDateString(String dateString) {
-        final DateTimeFormatter formatter =
-                DateTimeFormatter.ofPattern(dateFormatPattern);
-        final ZonedDateTime zonedDateTime = ZonedDateTime.parse(dateString, formatter);
+        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormatPattern);
+        final LocalDate date = LocalDate.parse(dateString, formatter);
+        final ZonedDateTime zonedDateTime = date.atStartOfDay(ZoneId.systemDefault());
         return Date.from(zonedDateTime.toInstant());
     }
 

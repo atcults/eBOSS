@@ -26,7 +26,7 @@ public class EmployeeDTOConverterTest {
         dto.setFirstName("fName");
         dto.setMiddleName("mName");
         dto.setLastName("lName");
-        dto.setDateOfBirth("1990/1/1");
+        dto.setDateOfBirth("1990/01/01");
         dto.setAddressLine1("7,Shakti Park Soc");
         dto.setAddressLine2("College Road");
         dto.setCity("Nadiad");
@@ -36,7 +36,7 @@ public class EmployeeDTOConverterTest {
         dto.setPhone("9876543210");
         dto.setEmail("fname@gmail.com");
         dto.setGender("Male");
-        dto.setDateOfJoining("2015/7/1");
+        dto.setDateOfJoining("2015/07/01");
         dto.setIsActive(true);
         ProcessCommand command = employeeDTOConverter.convert(dto);
         assertTrue("Wrong output " + command, command instanceof AddEmployee);
