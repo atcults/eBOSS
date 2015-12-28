@@ -54,6 +54,6 @@ public class EmployeeService extends ApiServiceBase {
 
     @POST
     public String addEmployee(EmployeeDTO employeeDTO) throws Exception {
-        return execute(employeeDTO, ActivitiProcessConstants.Admin.ADD_EMPLOYEE_PROCESS);
+        return execute(employeeDTO, ActivitiProcessConstants.Admin.ADD_EMPLOYEE);
     }
 }

@@ -10,13 +10,13 @@ import org.sanelib.eboss.core.commands.employee.AddEmployee;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class EmployeeDTOConverterTest {
+public class AddEmployeeConverterTest {
 
-    EmployeeDTOConverter employeeDTOConverter;
+    AddEmployeeConverter addEmployeeConverter;
 
     @Before
     public void setUp(){
-        employeeDTOConverter = new EmployeeDTOConverter();
+        addEmployeeConverter = new AddEmployeeConverter();
     }
 
     @Test
@@ -38,7 +38,7 @@ public class EmployeeDTOConverterTest {
         dto.setGender("Male");
         dto.setDateOfJoining("2015/07/01");
         dto.setIsActive(true);
-        ProcessCommand command = employeeDTOConverter.convert(dto);
+        ProcessCommand command = addEmployeeConverter.convert(dto);
         assertTrue("Wrong output " + command, command instanceof AddEmployee);
         AddEmployee addEmployee = (AddEmployee) command;
         assertEquals("Id is not mapped", dto.getId(), addEmployee.getId());

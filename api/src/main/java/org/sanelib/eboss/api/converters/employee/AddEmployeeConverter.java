@@ -8,7 +8,7 @@ import org.sanelib.eboss.core.commands.employee.AddEmployee;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EmployeeDTOConverter implements DtoToCommandConverter<EmployeeDTO> {
+public class AddEmployeeConverter implements DtoToCommandConverter<EmployeeDTO> {
 
     @Override
     public ProcessCommand convert(EmployeeDTO dto) {

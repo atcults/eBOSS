@@ -12,7 +12,6 @@ import org.sanelib.eboss.core.dao.UnitOfWork;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-import java.beans.Introspector;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,8 +35,8 @@ public abstract class ApiServiceBase {
         String response = null;
 
         try {
-            String converterName = Introspector.decapitalize(dto.getClass().getSimpleName() + "Converter");
-            System.out.println(converterName);
+            String converterName = processKey + "Converter";
+
             DtoToCommandConverter converter = (DtoToCommandConverter) ctx.getBean(converterName);
 
             ProcessCommand command = converter.convert(dto);
@@ -45,8 +44,10 @@ public abstract class ApiServiceBase {
             Map<String, Object> variables = new HashMap<>();
             variables.put("command", command);
 
+            String processName = processKey + "Process";
+
             unitOfWork.begin();
-            ProcessInstance instance = runtimeService.startProcessInstanceByKey(processKey, variables);
+            ProcessInstance instance = runtimeService.startProcessInstanceByKey(processName, variables);
             Map<String, VariableInstanceEntity> variableInstances = ((ExecutionEntity) instance).getVariableInstances();
             if(variableInstances.containsKey("result")){
                 response = variableInstances.get("result").getValue().toString();
