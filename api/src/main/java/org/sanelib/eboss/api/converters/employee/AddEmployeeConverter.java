@@ -1,19 +1,32 @@
 package org.sanelib.eboss.api.converters.employee;
 
+import com.google.common.base.Strings;
 import org.sanelib.eboss.api.converters.DtoToCommandConverter;
 import org.sanelib.eboss.api.dto.employee.EmployeeDTO;
 import org.sanelib.eboss.common.utils.DateHelper;
 import org.sanelib.eboss.core.commands.ProcessCommand;
 import org.sanelib.eboss.core.commands.employee.AddEmployee;
+import org.sanelib.eboss.core.exceptions.ProcessError;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AddEmployeeConverter implements DtoToCommandConverter<EmployeeDTO> {
 
+    @Autowired
+    ProcessError processError;
+
     @Override
     public ProcessCommand convert(EmployeeDTO dto) {
         AddEmployee command = new AddEmployee();
-        command.setCode(dto.getCode());
+
+        //Check code and convert
+        if(Strings.isNullOrEmpty(dto.getCode())){
+            processError.addError("common.field.required", "code", "domain.employee.code");
+        }else{
+            command.setCode(dto.getCode());
+        }
+
         command.setFirstName(dto.getFirstName());
         command.setMiddleName(dto.getMiddleName());
         command.setLastName(dto.getLastName());

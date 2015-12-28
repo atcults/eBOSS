@@ -2,10 +2,7 @@ package org.sanelib.eboss.common.properties;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +19,7 @@ public class MapDictionaryServiceImpl implements MapDictionaryService {
 	@Autowired
 	private AppProperties appProperties;
 
-	private final Map<String, Map<String, String>> mapDictionary = new ConcurrentHashMap<>();
+    private final Map<String, Map<String, String>> mapDictionary = new ConcurrentHashMap<>();
 
 	private Map<String, String> buildMapDictionary(String locale) {
 
@@ -88,14 +85,36 @@ public class MapDictionaryServiceImpl implements MapDictionaryService {
 	}
 
 	@Override
-	public String getValue(String key) {
+	public String generateMessage(String key, List<String> termNames, List<String> values) {
 
-		String locale = appProperties.getLocale();
+		final String locale = appProperties.getLocale();
 
-		if (mapDictionary.get(locale) == null) {
+        final String labelTokenMather = "^(\\~\\d)$";
+        final String valueTokenMatcher = "^(\\^\\d)$";
+
+        if (mapDictionary.get(locale) == null) {
 			mapDictionary.put(locale, buildMapDictionary(locale));
 		}
 
-		return mapDictionary.get(locale).get(key);
+		final String template = mapDictionary.get(locale).get(key);
+
+        StringBuilder response = new StringBuilder();
+
+        StringTokenizer st = new StringTokenizer(template);
+        while (st.hasMoreTokens()) {
+            String t = st.nextToken();
+            if(t.matches(labelTokenMather)){
+                Integer pos = Integer.parseInt(t.substring(1));
+                response.append(mapDictionary.get(locale).get(termNames.get(pos)));
+            } else if(t.matches(valueTokenMatcher)){
+                Integer pos = Integer.parseInt(t.substring(1));
+                response.append(values.get(pos));
+            } else {
+                response.append(t);
+            }
+            response.append(" ");
+         }
+
+        return response.toString();
 	}
 }

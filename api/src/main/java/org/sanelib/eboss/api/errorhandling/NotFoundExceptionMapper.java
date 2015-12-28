@@ -1,23 +1,31 @@
 package org.sanelib.eboss.api.errorhandling;
 
-import org.sanelib.eboss.core.exceptions.ResponseError;
+import org.sanelib.eboss.common.properties.MapDictionaryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
+import java.util.Collections;
 
+@Component
 public class NotFoundExceptionMapper implements ExceptionMapper<NotFoundException> {
 
-	public Response toResponse(NotFoundException ex) {
+    @Autowired
+    MapDictionaryService dictionaryService;
 
-        ResponseError responseError = new ResponseError();
-        responseError.addError("resource.not.found", "form", ex.getMessage());
+    public Response toResponse(NotFoundException ex) {
 
-		return Response.status(ex.getResponse().getStatus())
-				.entity(responseError)
-				.type(MediaType.APPLICATION_JSON) //this has to be set to get the generated JSON
-				.build();
-	}
+        ErrorResponse response = new ErrorResponse();
+
+        response.addError("server", dictionaryService.generateMessage("common.server.error", null, Collections.singletonList(ex.getMessage())));
+
+        return Response.status(400)
+                .entity(response)
+                .type(MediaType.APPLICATION_JSON)
+                .build();
+    }
 
 }

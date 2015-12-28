@@ -1,24 +1,35 @@
 package org.sanelib.eboss.api.errorhandling;
 
+import org.sanelib.eboss.common.properties.MapDictionaryService;
 import org.sanelib.eboss.core.exceptions.AppException;
-import org.sanelib.eboss.core.exceptions.ResponseError;
+import org.sanelib.eboss.core.exceptions.ProcessError;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 
+@Component
 public class AppExceptionMapper implements ExceptionMapper<AppException> {
+
+    @Autowired
+    MapDictionaryService dictionaryService;
 
 	public Response toResponse(AppException ex) {
 
-        ResponseError responseError = new ResponseError();
+        ProcessError processError = ex.getProcessError();
 
-        responseError.addError("application.exception", "form", ex.getMessage());
+        ErrorResponse response = new ErrorResponse();
 
-        return Response.status(ex.getStatus())
-				.entity(responseError)
-				.type(MediaType.APPLICATION_JSON).
-				build();
+        for (ProcessError.ErrorLine line : processError.getErrors()){
+            response.addError(line.getFieldNames(), dictionaryService.generateMessage(line.getTemplate(), line.getTermNames(), line.getValues()));
+        }
+
+        return Response.status(406)
+				.entity(response)
+				.type(MediaType.APPLICATION_JSON)
+                .build();
 	}
 
 }

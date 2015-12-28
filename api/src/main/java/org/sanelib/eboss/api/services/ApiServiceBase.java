@@ -9,6 +9,8 @@ import org.sanelib.eboss.api.converters.DtoToCommandConverter;
 import org.sanelib.eboss.api.dto.BaseDTO;
 import org.sanelib.eboss.core.commands.ProcessCommand;
 import org.sanelib.eboss.core.dao.UnitOfWork;
+import org.sanelib.eboss.core.exceptions.AppException;
+import org.sanelib.eboss.core.exceptions.ProcessError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -29,8 +31,11 @@ public abstract class ApiServiceBase {
     @Autowired
     ApplicationContext ctx;
 
+    @Autowired
+    ProcessError processError;
 
-    protected String execute(BaseDTO dto, String processKey) {
+    @SuppressWarnings("unchecked")
+    protected String execute(BaseDTO dto, String processKey) throws Exception {
 
         String response = null;
 
@@ -40,6 +45,10 @@ public abstract class ApiServiceBase {
             DtoToCommandConverter converter = (DtoToCommandConverter) ctx.getBean(converterName);
 
             ProcessCommand command = converter.convert(dto);
+
+            if(!processError.isValid()){
+                throw new AppException(processError);
+            }
 
             Map<String, Object> variables = new HashMap<>();
             variables.put("command", command);
@@ -55,8 +64,8 @@ public abstract class ApiServiceBase {
             System.out.println(instance.getId());
             unitOfWork.commit();
         } catch (Exception exception){
-            System.out.println(exception.getMessage());
             unitOfWork.rollback();
+            throw exception;
         }
 
         return response;

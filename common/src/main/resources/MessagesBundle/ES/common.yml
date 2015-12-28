@@ -1,6 +1,8 @@
 homeUrl: www.sanelib.com
 welcome: Bienvenido a sanelib
 
+server:
+  error: Se produjo un error interno del servidor. ^0
+
 field:
-  required: Este campo es requerido-(y)
-  invalid: Este campo no es válido-(y)
+  required: ~0 campo es requerido

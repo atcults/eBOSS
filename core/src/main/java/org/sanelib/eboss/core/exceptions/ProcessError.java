@@ -1,10 +1,16 @@
 package org.sanelib.eboss.core.exceptions;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ResponseError {
+@Component
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+public class ProcessError {
 
     private final List<ErrorLine> errors = new ArrayList<>();
 
@@ -13,7 +19,7 @@ public class ResponseError {
     }
 
     public void addError(String template, String fieldName, String labelName){
-        this.errors.add(new ErrorLine(template, Collections.singletonList(fieldName), Collections.singletonList(labelName), new ArrayList<String>()));
+        this.errors.add(new ErrorLine(template, Collections.singletonList(fieldName), Collections.singletonList(labelName), new ArrayList<>()));
     }
 
     public void addError(String template, String fieldName, String labelName, String value){
