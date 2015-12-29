@@ -4,6 +4,7 @@ import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 import org.activiti.engine.impl.persistence.entity.VariableInstanceEntity;
+import org.activiti.engine.impl.pvm.PvmException;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.sanelib.eboss.api.converters.DtoToCommandConverter;
 import org.sanelib.eboss.api.dto.BaseDTO;
@@ -35,7 +36,7 @@ public abstract class ApiServiceBase {
     ProcessError processError;
 
     @SuppressWarnings("unchecked")
-    protected String execute(BaseDTO dto, String processKey) throws Exception {
+    protected String execute(BaseDTO dto, String processKey) throws Throwable {
 
         String response = null;
 
@@ -63,6 +64,9 @@ public abstract class ApiServiceBase {
             unitOfWork.commit();
         } catch (Exception exception){
             unitOfWork.rollback();
+            if(exception instanceof PvmException){
+                throw exception.getCause();
+            }
             throw exception;
         }
         return response;
