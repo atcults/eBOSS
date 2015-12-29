@@ -100,4 +100,6 @@ public class AddCustomer implements ProcessCommand{
                 ", notes='" + notes + '\'' +
                 '}';
     }
+
+
 }
