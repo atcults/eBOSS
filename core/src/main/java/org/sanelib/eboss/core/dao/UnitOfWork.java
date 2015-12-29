@@ -4,9 +4,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class UnitOfWork {
 
 	@Autowired
@@ -33,12 +36,8 @@ public class UnitOfWork {
 	}
 
 	public void commit() {
-		try{
-            this.currentTransaction.commit();
-            this.currentSession.close();
-        } catch (Exception ex){
-            System.out.println(ex);
-        }
+        this.currentTransaction.commit();
+        this.currentSession.close();
 	}
 
 	public void rollback() {
