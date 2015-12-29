@@ -1,7 +1,12 @@
 employee:
   name: Empleado
   code: Código
-  email: e-mail
+  email: Email
+  firstName: Primer Nombre
+  lastName: Apellido
 
 customer:
-  code: Código
+  name: Nombre
+  country: País
+  phone: Teléfono
+  email: Email

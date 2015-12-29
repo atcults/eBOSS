@@ -2,6 +2,11 @@ employee:
   name: Employee
   code: Employee Code
   email: Email
+  firstName: FirstName
+  lastName: LastName
 
 customer:
-  code: Code
+  name: Name
+  country: Country
+  phone: Phone
+  email: Email

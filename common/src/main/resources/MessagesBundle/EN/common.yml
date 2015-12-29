@@ -7,3 +7,4 @@ server:
 field:
   required: ~0 field is required
   duplicate: ~0 with ~1 ^0 already exists.
+  pattern: ~0 format is incorrect. Ex. ^0
