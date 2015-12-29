@@ -33,7 +33,6 @@ public class AddCustomerConverterTest {
         ProcessCommand command = addCustomerConverter.convert(dto);
         assertTrue("Wrong output " + command, command instanceof AddCustomer);
         AddCustomer addCustomer = (AddCustomer) command;
-        assertEquals("Id is not mapped", dto.getId(), addCustomer.getId());
         assertEquals("Name is not mapped", dto.getName(),addCustomer.getName());
         assertEquals("Contact Person Name is not mapped", dto.getContactPersonName(),addCustomer.getContactPersonName());
         assertEquals("Address is not mapped", dto.getAddress(),addCustomer.getAddress());
