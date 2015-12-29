@@ -36,7 +36,7 @@ public class AddCustomerProcessTest extends IntegrationTestBase {
 
         Map<String, Object> variables = new HashMap<>();
         variables.put("command", customer);
-        runtimeService.startProcessInstanceByKey(ActivitiProcessConstants.Admin.ADD_CUSTOMER, variables);
+        runtimeService.startProcessInstanceByKey(ActivitiProcessConstants.Admin.ADD_CUSTOMER + "Process", variables);
     }
 
 }
