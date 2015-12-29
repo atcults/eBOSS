@@ -16,7 +16,7 @@ public class AddEmployeeProcessTest extends IntegrationTestBase {
 	TaskService taskService;
 
 	@Test
-	public void testHelloWorldProcessTest() throws Exception {
-		runtimeService.startProcessInstanceByKey(ActivitiProcessConstants.Admin.ADD_EMPLOYEE_PROCESS);
+	public void testHelloWorldProcessTest() throws Throwable {
+		runtimeService.startProcessInstanceByKey(ActivitiProcessConstants.Admin.ADD_EMPLOYEE);
 	}
 }
