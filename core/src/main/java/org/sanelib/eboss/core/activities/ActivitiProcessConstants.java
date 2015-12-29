@@ -4,6 +4,7 @@ public class ActivitiProcessConstants {
 
     public class Admin{
         public static final String ADD_EMPLOYEE = "addEmployee";
+        public static final String ADD_CUSTOMER = "addCustomer";
     }
 
 }
