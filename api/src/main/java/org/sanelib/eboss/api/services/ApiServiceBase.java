@@ -39,36 +39,32 @@ public abstract class ApiServiceBase {
 
         String response = null;
 
+        String converterName = processKey + "Converter";
+
+        DtoToCommandConverter converter = (DtoToCommandConverter) ctx.getBean(converterName);
+
+        ProcessCommand command = converter.convert(dto);
+
+        if(!processError.isValid()){
+            throw new AppException(processError);
+        }
+
+        String processName = processKey + "Process";
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("command", command);
+
         try {
-            String converterName = processKey + "Converter";
-
-            DtoToCommandConverter converter = (DtoToCommandConverter) ctx.getBean(converterName);
-
-            ProcessCommand command = converter.convert(dto);
-
-            if(!processError.isValid()){
-                throw new AppException(processError);
-            }
-
-            Map<String, Object> variables = new HashMap<>();
-            variables.put("command", command);
-
-            String processName = processKey + "Process";
-
             unitOfWork.begin();
             ProcessInstance instance = runtimeService.startProcessInstanceByKey(processName, variables);
             Map<String, VariableInstanceEntity> variableInstances = ((ExecutionEntity) instance).getVariableInstances();
             if(variableInstances.containsKey("result")){
                 response = variableInstances.get("result").getValue().toString();
             }
-            System.out.println(instance.getId());
             unitOfWork.commit();
         } catch (Exception exception){
             unitOfWork.rollback();
             throw exception;
         }
-
         return response;
     }
-
 }
