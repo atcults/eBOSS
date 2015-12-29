@@ -1,5 +1,7 @@
 employee:
-  code: Code
+  name: Employee
+  code: Employee Code
+  email: Email
 
 customer:
   code: Code

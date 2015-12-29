@@ -6,3 +6,4 @@ server:
 
 field:
   required: ~0 campo es requerido
+  duplicate: ~0 con ~1 ^0 ya existe.
