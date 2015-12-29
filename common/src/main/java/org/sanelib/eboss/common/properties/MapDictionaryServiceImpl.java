@@ -74,9 +74,9 @@ public class MapDictionaryServiceImpl implements MapDictionaryService {
 
 	@SuppressWarnings("unchecked")
 	private void buildDictionary(String prefix, Map<String, String> keyValuePair, Map<String, Object> map) {
-		for (Object k : map.keySet()) {
-			String key = prefix.length() > 0 ? prefix + "." + k.toString() : k.toString();
-			if (map.get(k) instanceof Map) {
+		for (String k : map.keySet()) {
+			String key = prefix.length() > 0 ? prefix + "." + k : k;
+            if (map.get(k) instanceof Map) {
 				buildDictionary(key, keyValuePair, (Map<String, Object>) map.get(k));
 			} else {
 				keyValuePair.put(key, map.get(k).toString());
@@ -89,7 +89,7 @@ public class MapDictionaryServiceImpl implements MapDictionaryService {
 
 		final String locale = appProperties.getLocale();
 
-        final String labelTokenMather = "^(\\~\\d)$";
+        final String labelTokenMather = "^(~\\d)$";
         final String valueTokenMatcher = "^(\\^\\d)$";
 
         if (mapDictionary.get(locale) == null) {
