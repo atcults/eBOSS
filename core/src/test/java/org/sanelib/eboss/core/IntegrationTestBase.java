@@ -2,6 +2,7 @@ package org.sanelib.eboss.core;
 
 import org.junit.After;
 import org.junit.runner.RunWith;
+import org.sanelib.eboss.common.utils.Clock;
 import org.sanelib.eboss.common.utils.CustomClock;
 import org.sanelib.eboss.common.utils.DateHelper;
 import org.sanelib.eboss.core.dao.UnitOfWork;
@@ -30,14 +31,14 @@ public class IntegrationTestBase {
 	}
 
     @Autowired
-    private CustomClock customClock;
+    private Clock clock;
 
     protected void stubCurrentDate(int year, int month, int day) {
-        customClock.set(DateHelper.constructDate(year, month, day));
+        ((CustomClock) clock).set(DateHelper.constructDate(year, month, day));
     }
 
     protected void stubCurrentDate(Date date) {
-        customClock.set(date);
+        ((CustomClock) clock).set(date);
     }
 
 	public <T> T load(Class clas, Serializable id) {
