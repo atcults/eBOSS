@@ -5,5 +5,5 @@ server:
   error: Se produjo un error interno del servidor. ^0
 
 field:
-  required: ~0 campo es requerido
+  required: ~0 es requerido
   duplicate: ~0 con ~1 ^0 ya existe.
