@@ -41,7 +41,6 @@ public class AddEmployeeConverterTest {
         ProcessCommand command = addEmployeeConverter.convert(dto);
         assertTrue("Wrong output " + command, command instanceof AddEmployee);
         AddEmployee addEmployee = (AddEmployee) command;
-        assertEquals("Id is not mapped", dto.getId(), addEmployee.getId());
         assertEquals("Code is not mapped", dto.getCode(), addEmployee.getCode());
         assertEquals("firstName is not mapped", dto.getFirstName(), addEmployee.getFirstName());
         assertEquals("middleName is not mapped", dto.getMiddleName(), addEmployee.getMiddleName());
