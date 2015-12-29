@@ -6,7 +6,6 @@ import java.util.Date;
 
 public class AddEmployee implements ProcessCommand {
 
-	private String id;
     private String code;
 	private String firstName;
 	private String middleName;
@@ -23,14 +22,6 @@ public class AddEmployee implements ProcessCommand {
 	private String gender;
 	private Date dateOfJoining;
 	private Boolean isActive;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getCode() {
         return code;
@@ -163,8 +154,7 @@ public class AddEmployee implements ProcessCommand {
     @Override
     public String toString() {
         return "AddEmployee{" +
-                "id='" + id + '\'' +
-                ", code='" + code + '\'' +
+                "code='" + code + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
