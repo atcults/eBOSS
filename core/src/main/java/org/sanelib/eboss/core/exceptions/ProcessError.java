@@ -26,6 +26,10 @@ public class ProcessError {
         this.errors.add(new ErrorLine(template, Collections.singletonList(fieldName), Collections.singletonList(labelName), Collections.singletonList(value)));
     }
 
+    public void addError(String template, String fieldName, List<String> labelNames, String value){
+        this.errors.add(new ErrorLine(template, Collections.singletonList(fieldName), labelNames, Collections.singletonList(value)));
+    }
+
     public List<ErrorLine> getErrors() {
         return errors;
     }
