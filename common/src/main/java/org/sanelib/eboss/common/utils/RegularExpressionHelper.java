@@ -1,6 +1,8 @@
 package org.sanelib.eboss.common.utils;
 
 
+import com.google.common.base.Strings;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,6 +17,11 @@ public class RegularExpressionHelper {
     public static final String DATE_FORMAT_EXAMPLE ="1991/01/01";
 
     public static boolean checkIdFormat(String id) {
+
+        if(Strings.isNullOrEmpty(id)){
+            return false;
+        }
+
         // Create a Pattern object
         Pattern pattern = Pattern.compile(ID_FORMAT);
 
@@ -25,6 +32,11 @@ public class RegularExpressionHelper {
 
 
     public static boolean checkPhoneFormat(String phone) {
+
+        if(Strings.isNullOrEmpty(phone)){
+            return false;
+        }
+
         // Create a Pattern object
         Pattern pattern = Pattern.compile(PHONE_FORMAT);
 
@@ -34,6 +46,11 @@ public class RegularExpressionHelper {
     }
 
     public static boolean checkEmailFormat(String email) {
+
+        if(Strings.isNullOrEmpty(email)){
+            return false;
+        }
+
         // Create a Pattern object
         Pattern pattern = Pattern.compile(EMAIL_FORMAT);
 
@@ -43,6 +60,11 @@ public class RegularExpressionHelper {
     }
 
     public static boolean checkDateFormat(String date) {
+
+        if(Strings.isNullOrEmpty(date)){
+            return false;
+        }
+
         // Create a Pattern object
         Pattern pattern = Pattern.compile(DATE_FORMAT);
 
