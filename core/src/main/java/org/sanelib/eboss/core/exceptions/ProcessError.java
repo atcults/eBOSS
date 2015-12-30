@@ -1,16 +1,11 @@
 package org.sanelib.eboss.core.exceptions;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Component
-@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class ProcessError {
+public class ProcessError implements Serializable {
 
     private final List<ErrorLine> errors = new ArrayList<>();
 
@@ -32,6 +27,10 @@ public class ProcessError {
 
     public List<ErrorLine> getErrors() {
         return errors;
+    }
+
+    public void clearErrors(){
+        this.errors.clear();
     }
 
     public boolean isValid() {
