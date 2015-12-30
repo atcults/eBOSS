@@ -8,17 +8,13 @@ import org.sanelib.eboss.common.utils.RegularExpressionHelper;
 import org.sanelib.eboss.core.commands.ProcessCommand;
 import org.sanelib.eboss.core.commands.employee.AddEmployee;
 import org.sanelib.eboss.core.exceptions.ProcessError;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AddEmployeeConverter implements DtoToCommandConverter<EmployeeDTO> {
 
-    @Autowired
-    ProcessError processError;
-
     @Override
-    public ProcessCommand convert(EmployeeDTO dto) {
+    public ProcessCommand convert(EmployeeDTO dto, ProcessError processError) {
         AddEmployee command = new AddEmployee();
 
         //Check code and convert

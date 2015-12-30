@@ -1,23 +1,16 @@
 package org.sanelib.eboss.api.converters.employee;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.sanelib.eboss.api.dto.employee.EmployeeDTO;
 import org.sanelib.eboss.common.utils.DateHelper;
 import org.sanelib.eboss.core.commands.ProcessCommand;
 import org.sanelib.eboss.core.commands.employee.AddEmployee;
+import org.sanelib.eboss.core.exceptions.ProcessError;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class AddEmployeeConverterTest {
-
-    AddEmployeeConverter addEmployeeConverter;
-
-    @Before
-    public void setUp(){
-        addEmployeeConverter = new AddEmployeeConverter();
-    }
 
     @Test
     public void testAddEmployeeSuccessExecute() throws Exception{
@@ -33,12 +26,18 @@ public class AddEmployeeConverterTest {
         dto.setState("Gujarat");
         dto.setCountry("India");
         dto.setZipCode("387001");
-        dto.setPhone("9876543210");
+        dto.setPhone("+91-9876543210");
         dto.setEmail("fname@gmail.com");
         dto.setGender("Male");
         dto.setDateOfJoining("2015/07/01");
         dto.setIsActive(true);
-        ProcessCommand command = addEmployeeConverter.convert(dto);
+
+        ProcessError processError = new ProcessError();
+
+        AddEmployeeConverter addEmployeeConverter = new AddEmployeeConverter();
+        ProcessCommand command = addEmployeeConverter.convert(dto, processError);
+
+        assertTrue("Conversion error occurred", processError.isValid());
         assertTrue("Wrong output " + command, command instanceof AddEmployee);
         AddEmployee addEmployee = (AddEmployee) command;
         assertEquals("Code is not mapped", dto.getCode(), addEmployee.getCode());

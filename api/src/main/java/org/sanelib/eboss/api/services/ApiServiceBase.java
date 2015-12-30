@@ -32,9 +32,6 @@ public abstract class ApiServiceBase {
     @Autowired
     ApplicationContext ctx;
 
-    @Autowired
-    ProcessError processError;
-
     @SuppressWarnings("unchecked")
     protected String execute(BaseDTO dto, String processKey) throws Throwable {
 
@@ -44,7 +41,9 @@ public abstract class ApiServiceBase {
 
         DtoToCommandConverter converter = (DtoToCommandConverter) ctx.getBean(converterName);
 
-        ProcessCommand command = converter.convert(dto);
+        ProcessError processError = new ProcessError();
+
+        ProcessCommand command = converter.convert(dto, processError);
 
         if(!processError.isValid()){
             throw new AppException(processError);
@@ -53,6 +52,7 @@ public abstract class ApiServiceBase {
         String processName = processKey + "Process";
         Map<String, Object> variables = new HashMap<>();
         variables.put("command", command);
+        variables.put("errors", processError);
 
         try {
             unitOfWork.begin();

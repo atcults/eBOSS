@@ -1,21 +1,16 @@
 package org.sanelib.eboss.api.converters.customer;
 
 
-import org.junit.Before;
 import org.junit.Test;
 import org.sanelib.eboss.api.dto.customer.CustomerDTO;
 import org.sanelib.eboss.core.commands.ProcessCommand;
 import org.sanelib.eboss.core.commands.customer.AddCustomer;
+import org.sanelib.eboss.core.exceptions.ProcessError;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class AddCustomerConverterTest {
-
-    AddCustomerConverter addCustomerConverter;
-
-    @Before
-    public void setUp(){ addCustomerConverter = new AddCustomerConverter(); }
 
     @Test
     public void testAddCustomerSuccessExecute() throws Exception{
@@ -30,7 +25,12 @@ public class AddCustomerConverterTest {
         dto.setFax("+91-9876543210");
         dto.setWebsite("www.google.com");
         dto.setNotes("New Customer");
-        ProcessCommand command = addCustomerConverter.convert(dto);
+
+        ProcessError processError = new ProcessError();
+
+        AddCustomerConverter addCustomerConverter = new AddCustomerConverter();
+        ProcessCommand command = addCustomerConverter.convert(dto, processError);
+
         assertTrue("Wrong output " + command, command instanceof AddCustomer);
         AddCustomer addCustomer = (AddCustomer) command;
         assertEquals("Name is not mapped", dto.getName(),addCustomer.getName());

@@ -21,14 +21,12 @@ public class CheckEmployeeDuplicationDelegate implements JavaDelegate {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    @Autowired
-    ProcessError processError;
-
     @Override
 	public void execute(DelegateExecution execution) throws Exception {
 		System.out.println("Checking employee for duplication");
 
         Object command = execution.getVariable("command");
+        ProcessError processError = (ProcessError) execution.getVariable("errors");
 
         Integer existingEmployeeId = (command instanceof UpdateEmployee) ? ((UpdateEmployee) command).getId() : null;
 
