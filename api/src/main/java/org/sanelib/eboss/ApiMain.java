@@ -2,15 +2,18 @@ package org.sanelib.eboss;
 
 import java.util.Locale;
 
+import org.hibernate.SessionFactory;
 import org.sanelib.eboss.common.properties.AppProperties;
 import org.sanelib.eboss.common.utils.Clock;
-import org.sanelib.eboss.common.utils.CustomClock;
 import org.sanelib.eboss.common.utils.SystemClock;
+import org.sanelib.eboss.core.dao.UnitOfWork;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 
 @SpringBootApplication
 public class ApiMain implements CommandLineRunner {
@@ -18,7 +21,10 @@ public class ApiMain implements CommandLineRunner {
 	@Autowired
 	private AppProperties appProperties;
 
-	@Override
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    @Override
 	public void run(String... args) {
 		Locale.setDefault(new Locale(this.appProperties.getLocale()));
 	}
@@ -30,6 +36,13 @@ public class ApiMain implements CommandLineRunner {
     @Bean
     public Clock clock() {
         return new SystemClock();
+    }
+
+    @Bean
+    @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+    public UnitOfWork unitOfWork(){
+        return new UnitOfWork(this.sessionFactory);
+
     }
 
 }

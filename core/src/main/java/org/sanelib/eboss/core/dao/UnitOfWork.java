@@ -3,20 +3,16 @@ package org.sanelib.eboss.core.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
 
-@Component
-@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class UnitOfWork {
 
-	@Autowired
-	private SessionFactory sessionFactory;
-
-	private Session currentSession;
+    private SessionFactory sessionFactory;
+    private Session currentSession;
 	private Transaction currentTransaction;
+
+    public UnitOfWork(SessionFactory sessionFactory){
+        this.sessionFactory = sessionFactory;
+    }
 
 	public void begin() {
 		this.currentSession = sessionFactory.openSession();
