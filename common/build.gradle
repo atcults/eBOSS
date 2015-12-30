@@ -4,6 +4,8 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.5'
     compile 'org.yaml:snakeyaml:1.16'
     compile 'org.springframework.boot:spring-boot-starter'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
 
