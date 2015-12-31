@@ -5,6 +5,10 @@ jar {
     bootRepackage.enabled = false
 }
 
+sourceSets {
+    main.resources.srcDirs += ['../common/src/main/resources']
+}
+
 dependencies {
     compile project(':common')
 
@@ -16,6 +20,6 @@ dependencies {
 
     compile 'mysql:mysql-connector-java:5.1.38'
 
-
+    testCompile project (':common')
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
