@@ -2,6 +2,7 @@ description = 'eBOSS Core'
 
 jar {
     baseName = 'core'
+    bootRepackage.enabled = false
 }
 
 dependencies {
