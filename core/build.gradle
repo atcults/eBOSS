@@ -5,6 +5,10 @@ jar {
     bootRepackage.enabled = false
 }
 
+processResources {
+    from '../common/src/main/resources'
+}
+
 dependencies {
     compile project(':common')
 

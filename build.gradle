@@ -23,6 +23,7 @@ allprojects {
     task wrapper(type: Wrapper) {
         gradleVersion = '2.9'
     }
+
 }
 
 subprojects {
@@ -43,6 +44,14 @@ subprojects {
         compile 'com.google.guava:guava:19.0-rc2'
         testCompile 'org.springframework.boot:spring-boot-starter-test'
     }
+
+    test {
+        testLogging {
+            events "started", "passed", "skipped", "failed", "standardOut", "standardError"
+        }
+
+        testLogging.showStandardStreams = true
+    }
 }
 
-apply from: rootProject.file('gradle/profiles.gradle ');
+apply from: rootProject.file('gradle/profiles.gradle');
