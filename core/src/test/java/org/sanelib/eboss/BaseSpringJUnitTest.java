@@ -1,4 +1,4 @@
-package org.sanelib.eboss.core;
+package org.sanelib.eboss;
 
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
@@ -8,7 +8,6 @@ import org.activiti.engine.runtime.ProcessInstance;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.sanelib.eboss.CoreMain;
 import org.sanelib.eboss.common.properties.AppProperties;
 import org.sanelib.eboss.common.utils.Clock;
 import org.sanelib.eboss.common.utils.CustomClock;
@@ -31,7 +30,7 @@ import java.util.Map;
 
 @ActiveProfiles("ci")
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = CoreMain.class)
+@SpringApplicationConfiguration(classes = CoreTestMain.class)
 public abstract class BaseSpringJUnitTest {
 
     @Autowired
@@ -91,8 +90,9 @@ public abstract class BaseSpringJUnitTest {
         ((CustomClock) clock).set(date);
     }
 
-    public <T> T load(Class clas, Serializable id) {
-        return (T) this.unitOfWork.getCurrentSession().load(clas, id);
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public <T> T load(Class klass, Serializable id) {
+        return (T) this.unitOfWork.getCurrentSession().load(klass, id);
     }
 
     public void persist(BaseEntity entity) {

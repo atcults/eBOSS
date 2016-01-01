@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class CoreMain  {
+public class CoreTestMain  {
 
     @Autowired
     private SessionFactory sessionFactory;

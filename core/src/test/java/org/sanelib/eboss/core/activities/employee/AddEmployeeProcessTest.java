@@ -2,7 +2,7 @@ package org.sanelib.eboss.core.activities.employee;
 
 import org.junit.Test;
 import org.sanelib.eboss.common.utils.RegularExpressionHelper;
-import org.sanelib.eboss.core.BaseSpringJUnitTest;
+import org.sanelib.eboss.BaseSpringJUnitTest;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.sanelib.eboss.core.commands.employee.AddEmployee;
 import org.sanelib.eboss.core.domain.entity.Employee;
