@@ -6,6 +6,10 @@ war {
     baseName = 'api'
 }
 
+processResources {
+    from '../common/src/main/resources'
+}
+
 dependencies {
     compile project(':common')
     compile project(':core')
