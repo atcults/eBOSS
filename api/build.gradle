@@ -6,10 +6,6 @@ war {
     baseName = 'api'
 }
 
-sourceSets {
-    main.resources.srcDirs += ['../common/src/main/resources']
-}
-
 dependencies {
     compile project(':common')
     compile project(':core')
@@ -20,10 +16,4 @@ dependencies {
     compile 'org.glassfish.jersey.media:jersey-media-multipart:2.22.1'
 
     compile 'org.springframework.boot:spring-boot-starter-jersey'
-
-
-    testCompile project (':common')
-    testCompile project (':core')
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
-
 }

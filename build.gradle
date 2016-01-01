@@ -39,7 +39,7 @@ subprojects {
     }
 
     dependencies {
-        compile 'org.codehaus.groovy:groovy:2.4.5'
+        compile 'org.codehaus.groovy:groovy-all:2.4.5'
         compile 'com.google.guava:guava:19.0-rc2'
         testCompile 'org.springframework.boot:spring-boot-starter-test'
     }
