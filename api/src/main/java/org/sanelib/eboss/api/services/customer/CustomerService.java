@@ -1,13 +1,10 @@
 package org.sanelib.eboss.api.services.customer;
 
 
-import org.activiti.engine.RuntimeService;
 import org.sanelib.eboss.api.dto.customer.CustomerDTO;
 import org.sanelib.eboss.api.services.ApiEndPointConstants;
 import org.sanelib.eboss.api.services.ApiServiceBase;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
@@ -22,12 +19,6 @@ import java.util.List;
 @Path(ApiEndPointConstants.Admin.CUSTOMER_END_POINT)
 @Produces(MediaType.APPLICATION_JSON)
 public class CustomerService extends ApiServiceBase {
-
-    @Autowired
-    ApplicationContext applicationContext;
-
-    @Autowired
-    RuntimeService runtimeService;
 
     @GET
     public List<CustomerDTO> getAllCustomer() throws Exception{

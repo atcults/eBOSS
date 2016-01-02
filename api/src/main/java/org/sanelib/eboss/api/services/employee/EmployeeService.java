@@ -1,13 +1,9 @@
 package org.sanelib.eboss.api.services.employee;
 
-import org.activiti.engine.RuntimeService;
-import org.activiti.engine.impl.test.TestHelper;
 import org.sanelib.eboss.api.dto.employee.EmployeeDTO;
 import org.sanelib.eboss.api.services.ApiEndPointConstants;
 import org.sanelib.eboss.api.services.ApiServiceBase;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
@@ -22,12 +18,6 @@ import java.util.List;
 @Path(ApiEndPointConstants.Admin.EMPLOYEE_END_POINT)
 @Produces(MediaType.APPLICATION_JSON)
 public class EmployeeService extends ApiServiceBase {
-
-    @Autowired
-    ApplicationContext applicationContext;
-
-    @Autowired
-    RuntimeService runtimeService;
 
     @GET
     public List<EmployeeDTO> getAllEmployees() throws Exception {
