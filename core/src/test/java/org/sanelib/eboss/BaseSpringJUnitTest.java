@@ -19,7 +19,6 @@ import org.sanelib.eboss.core.exceptions.ProcessError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.Serializable;
@@ -28,7 +27,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-@ActiveProfiles("ci")
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = CoreTestMain.class)
 public abstract class BaseSpringJUnitTest {
