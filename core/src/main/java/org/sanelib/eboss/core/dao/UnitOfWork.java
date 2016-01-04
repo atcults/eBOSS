@@ -3,17 +3,16 @@ package org.sanelib.eboss.core.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
 public class UnitOfWork {
 
-	@Autowired
-	private SessionFactory sessionFactory;
-
-	private Session currentSession;
+    private SessionFactory sessionFactory;
+    private Session currentSession;
 	private Transaction currentTransaction;
+
+    public UnitOfWork(SessionFactory sessionFactory){
+        this.sessionFactory = sessionFactory;
+    }
 
 	public void begin() {
 		this.currentSession = sessionFactory.openSession();
@@ -33,12 +32,8 @@ public class UnitOfWork {
 	}
 
 	public void commit() {
-		try{
-            this.currentTransaction.commit();
-            this.currentSession.close();
-        } catch (Exception ex){
-            System.out.println(ex);
-        }
+        this.currentTransaction.commit();
+        this.currentSession.close();
 	}
 
 	public void rollback() {

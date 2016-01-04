@@ -1,10 +1,11 @@
 package org.sanelib.eboss.core.exceptions;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ResponseError {
+public class ProcessError implements Serializable {
 
     private final List<ErrorLine> errors = new ArrayList<>();
 
@@ -13,15 +14,23 @@ public class ResponseError {
     }
 
     public void addError(String template, String fieldName, String labelName){
-        this.errors.add(new ErrorLine(template, Collections.singletonList(fieldName), Collections.singletonList(labelName), new ArrayList<String>()));
+        this.errors.add(new ErrorLine(template, Collections.singletonList(fieldName), Collections.singletonList(labelName), new ArrayList<>()));
     }
 
     public void addError(String template, String fieldName, String labelName, String value){
         this.errors.add(new ErrorLine(template, Collections.singletonList(fieldName), Collections.singletonList(labelName), Collections.singletonList(value)));
     }
 
+    public void addError(String template, String fieldName, List<String> labelNames, String value){
+        this.errors.add(new ErrorLine(template, Collections.singletonList(fieldName), labelNames, Collections.singletonList(value)));
+    }
+
     public List<ErrorLine> getErrors() {
         return errors;
+    }
+
+    public void clearErrors(){
+        this.errors.clear();
     }
 
     public boolean isValid() {

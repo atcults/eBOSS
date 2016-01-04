@@ -6,6 +6,10 @@ war {
     baseName = 'api'
 }
 
+processResources {
+    from '../common/src/main/resources'
+}
+
 dependencies {
     compile project(':common')
     compile project(':core')
@@ -16,6 +20,4 @@ dependencies {
     compile 'org.glassfish.jersey.media:jersey-media-multipart:2.22.1'
 
     compile 'org.springframework.boot:spring-boot-starter-jersey'
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
-
 }

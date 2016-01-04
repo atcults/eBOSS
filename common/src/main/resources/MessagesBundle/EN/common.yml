@@ -1,6 +1,10 @@
 homeUrl: www.sanelib.com
 welcome: Welcome to Sanelib
 
+server:
+  error: Internal server error occured. ^0
+
 field:
-  required: This field is required (y)
-  invalid: this filed is invalid (y)
+  required: ~0 is required
+  duplicate: ~0 with ~1 ^0 already exists.
+  pattern: ~0 format is incorrect. Ex. ^0

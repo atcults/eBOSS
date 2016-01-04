@@ -1,0 +1,14 @@
+employee:
+  id: ID
+  name: Empleado
+  code: Código
+  email: Email
+  firstName: Primer Nombre
+  lastName: Apellido
+
+customer:
+  id: ID
+  name: Nombre
+  country: País
+  phone: Teléfono
+  email: Email

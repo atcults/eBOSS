@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+			 xmlns:activiti="http://activiti.org/bpmn" 
+			 xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" 
+			 xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" 
+			 expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef" 
+			 xmlns:modeler="http://activiti.com/modeler" modeler:version="1.0ev" modeler:exportDateTime="20151228114757" 
+			 modeler:modelId="969882" modeler:modelVersion="1" modeler:modelLastUpdated="1451303267802">
+  <process id="addCustomerProcess" name="addCustomerProcess" isExecutable="true">
+    <documentation>To process add customer command</documentation>
+    <startEvent id="startAddCustomerProcess" name="start"/>
+    <serviceTask id="checkCustomerDuplicationID" name="checkCustomerDuplication" activiti:delegateExpression="${checkCustomerDuplicationDelegate}"/>
+    <sequenceFlow id="sid-9B2E3492-26CA-40A3-A8CB-74E1302888A3" sourceRef="checkCustomerDuplicationID" targetRef="processAddCustomerID"/>
+    <serviceTask id="processAddCustomerID" name="processAddCustomerProcess" activiti:delegateExpression="${processAddCustomerDelegate}"/>
+    <endEvent id="endCustomerID" name="end"/>
+    <sequenceFlow id="sid-78877653-D15F-47F3-91D3-921D9E76438B" sourceRef="processAddCustomerID" targetRef="endCustomerID"/>
+    <sequenceFlow id="sid-58CEA65D-CB0B-49CE-B48C-D1E99EDC6E28" sourceRef="startAddCustomerProcess" targetRef="checkCustomerDuplicationID"/>
+  </process>
+</definitions>

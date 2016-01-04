@@ -4,15 +4,17 @@ import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 import org.activiti.engine.impl.persistence.entity.VariableInstanceEntity;
+import org.activiti.engine.impl.pvm.PvmException;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.sanelib.eboss.api.converters.DtoToCommandConverter;
 import org.sanelib.eboss.api.dto.BaseDTO;
 import org.sanelib.eboss.core.commands.ProcessCommand;
 import org.sanelib.eboss.core.dao.UnitOfWork;
+import org.sanelib.eboss.core.exceptions.AppException;
+import org.sanelib.eboss.core.exceptions.ProcessError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-import java.beans.Introspector;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,35 +32,43 @@ public abstract class ApiServiceBase {
     @Autowired
     ApplicationContext ctx;
 
-
-    protected String execute(BaseDTO dto, String processKey) {
+    @SuppressWarnings("unchecked")
+    protected String execute(BaseDTO dto, String processKey) throws Throwable {
 
         String response = null;
 
+        String converterName = processKey + "Converter";
+
+        DtoToCommandConverter converter = (DtoToCommandConverter) ctx.getBean(converterName);
+
+        ProcessError processError = new ProcessError();
+
+        ProcessCommand command = converter.convert(dto, processError);
+
+        if(!processError.isValid()){
+            throw new AppException(processError);
+        }
+
+        String processName = processKey + "Process";
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("command", command);
+        variables.put("errors", processError);
+
         try {
-            String converterName = Introspector.decapitalize(dto.getClass().getSimpleName() + "Converter");
-            System.out.println(converterName);
-            DtoToCommandConverter converter = (DtoToCommandConverter) ctx.getBean(converterName);
-
-            ProcessCommand command = converter.convert(dto);
-
-            Map<String, Object> variables = new HashMap<>();
-            variables.put("command", command);
-
             unitOfWork.begin();
-            ProcessInstance instance = runtimeService.startProcessInstanceByKey(processKey, variables);
+            ProcessInstance instance = runtimeService.startProcessInstanceByKey(processName, variables);
             Map<String, VariableInstanceEntity> variableInstances = ((ExecutionEntity) instance).getVariableInstances();
             if(variableInstances.containsKey("result")){
                 response = variableInstances.get("result").getValue().toString();
             }
-            System.out.println(instance.getId());
             unitOfWork.commit();
         } catch (Exception exception){
-            System.out.println(exception.getMessage());
             unitOfWork.rollback();
+            if(exception instanceof PvmException){
+                throw exception.getCause();
+            }
+            throw exception;
         }
-
         return response;
     }
-
 }
