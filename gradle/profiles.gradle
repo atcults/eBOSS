@@ -31,12 +31,19 @@ subprojects {
         propertyDrivenProfiles = devProfiles
         apply from: rootProject.file('gradle/profile_dev.gradle');
 
+    } else if (project.hasProperty('ci')) {
+        // Used for local development
+        // Local MySQL database
+        // Uses embedded Tomcat
+        propertyDrivenProfiles = ciProfiles
+        apply from: rootProject.file('gradle/profile_ci.gradle');
+
     } else {
         // Default when no profile property is specified, used for CI automated testing
         // Embedded H2 database
         // Uses embedded Undertow instead of Tomcat for faster startup speeds
-        propertyDrivenProfiles = ciProfiles
-        apply from: rootProject.file('gradle/profile_ci.gradle');
+        propertyDrivenProfiles = devProfiles
+        apply from: rootProject.file('gradle/profile_dev.gradle');
     }
     println 'Using profile: "' + propertyDrivenProfiles + '" for ' + project.getName()
 
