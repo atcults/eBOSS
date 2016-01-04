@@ -14,7 +14,8 @@ server:
 db:
   driver: com.mysql.jdbc.Driver
   url: jdbc:mysql://localhost:3306/eboss
-  username: root
+  username: sanelib
+  password: S2n3lib
 
 
 # Hibernate
