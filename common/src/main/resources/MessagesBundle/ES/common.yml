@@ -7,3 +7,5 @@ server:
 field:
   required: ~0 es requerido
   duplicate: ~0 con ~1 ^0 ya existe.
+  pattern: ~0 formato es incorrecto. Ex. ^0
+  notexist: ~0 Id no existe
