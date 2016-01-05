@@ -1,6 +1,8 @@
 package org.sanelib.eboss.common.utils;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ReflectionHelper {
 
@@ -9,13 +11,33 @@ public class ReflectionHelper {
         Class<?> srcClass = src.getClass();
         Class<?> destClass = dest.getClass();
 
-        Field[] fromFields = srcClass.getDeclaredFields();
+        Map<Field, Object> srcFields = new HashMap<>();
 
-        for (Field srcField : fromFields){
-            srcField.setAccessible(true);
-            Object value = srcField.get(src);
-            Field destField = destClass.getDeclaredField(srcField.getName());
-            destField.setAccessible(true);
+        while(srcClass.getSuperclass() != null){
+            Field[] fromFields = srcClass.getDeclaredFields();
+            for (Field field : fromFields){
+                field.setAccessible(true);
+                Object value = field.get(src);
+                srcFields.put(field, value);
+            }
+            srcClass = srcClass.getSuperclass();
+        }
+
+        Map<String, Field> destFields = new HashMap<>();
+
+        while(destClass.getSuperclass() != null){
+            Field[] fromFields = destClass.getDeclaredFields();
+            for (Field field : fromFields){
+                field.setAccessible(true);
+                destFields.put(field.getName(), field);
+            }
+
+            destClass = destClass.getSuperclass();
+        }
+
+        for (Field srcField : srcFields.keySet()){
+            Field destField = destFields.get(srcField.getName());
+            Object value = srcFields.get(srcField);
             destField.set(dest, value);
         }
     }

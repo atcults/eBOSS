@@ -7,23 +7,39 @@ import static org.junit.Assert.assertEquals;
 
 public class ReflectionHelperTest {
 
+    public class BaseClass {
+        private int id;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+    }
+
+    public class DerivedClass extends BaseClass {
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+
     @Test
     public void testSameTypeObjectShouldCopyByReflection() throws Exception {
-        AppProperties src = new AppProperties();
-        src.setName("Test");
-        src.setLocale("EN");
-        src.setMessageBundle("yml");
-        src.setReleaseDate("2016/01/01");
-        src.setVersion("0.0");
+        BaseClass src = new BaseClass();
+        src.setId(1);
 
-        AppProperties dest = new AppProperties();
+        DerivedClass dest = new DerivedClass();
 
         ReflectionHelper.copy(src, dest);
 
-        assertEquals(src.getName(), dest.getName());
-        assertEquals(src.getLocale(), dest.getLocale());
-        assertEquals(src.getMessageBundle(), dest.getMessageBundle());
-        assertEquals(src.getReleaseDate(), dest.getReleaseDate());
-        assertEquals(src.getVersion(), dest.getVersion());
+        assertEquals(src.getId(), dest.getId());
     }
 }
