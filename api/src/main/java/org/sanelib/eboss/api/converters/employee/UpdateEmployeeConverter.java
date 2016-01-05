@@ -1,8 +1,11 @@
 package org.sanelib.eboss.api.converters.employee;
 
+import com.google.common.base.Strings;
 import org.sanelib.eboss.api.dto.employee.EmployeeDTO;
+import org.sanelib.eboss.common.utils.ReflectionHelper;
 import org.sanelib.eboss.common.utils.RegularExpressionHelper;
 import org.sanelib.eboss.core.commands.ProcessCommand;
+import org.sanelib.eboss.core.commands.employee.AddEmployee;
 import org.sanelib.eboss.core.commands.employee.UpdateEmployee;
 import org.sanelib.eboss.core.exceptions.ProcessError;
 import org.springframework.stereotype.Component;
@@ -11,15 +14,21 @@ import org.springframework.stereotype.Component;
 public class UpdateEmployeeConverter extends AddEmployeeConverter {
 
     @Override
-    public ProcessCommand convert(EmployeeDTO dto, ProcessError processError) {
-        UpdateEmployee command = (UpdateEmployee) super.convert(dto, processError);
+    public ProcessCommand convert(EmployeeDTO dto, ProcessError processError) throws NoSuchFieldException, IllegalAccessException {
 
-        if(RegularExpressionHelper.checkIdFormat(dto.getId())){
+        AddEmployee addEmployee = (AddEmployee) super.convert(dto, processError);
+
+        UpdateEmployee updateEmployee = new UpdateEmployee();
+        ReflectionHelper.copy(addEmployee, updateEmployee);
+
+        if(Strings.isNullOrEmpty(dto.getId())){
             processError.addError("common.field.required", "id", "domain.employee.id");
+        }else if(!RegularExpressionHelper.checkIdFormat(dto.getId())){
+            processError.addError("common.field.pattern", "id", "domain.employee.id", RegularExpressionHelper.ID_FORMAT);
         } else {
-            command.setId(Integer.parseInt(dto.getId()));
+            updateEmployee.setId(Integer.parseInt(dto.getId()));
         }
 
-        return command;
+        return updateEmployee;
     }
 }
