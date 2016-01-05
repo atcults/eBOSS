@@ -31,6 +31,8 @@ public class AddCustomerConverterTest {
         AddCustomerConverter addCustomerConverter = new AddCustomerConverter();
         ProcessCommand command = addCustomerConverter.convert(dto, processError);
 
+        assertTrue("Conversion error occurred", processError.isValid());
+
         assertTrue("Wrong output " + command, command instanceof AddCustomer);
         AddCustomer addCustomer = (AddCustomer) command;
         assertEquals("Name is not mapped", dto.getName(),addCustomer.getName());
