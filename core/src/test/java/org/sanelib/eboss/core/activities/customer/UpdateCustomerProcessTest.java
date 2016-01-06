@@ -34,7 +34,7 @@ public class UpdateCustomerProcessTest extends BaseSpringJUnitTest {
 
         Long id = Long.parseLong(result);
 
-        Customer customer = load(Customer.class, id);
+        Customer customer = fetch(Customer.class, id);
 
         assertNotNull(customer);
 
