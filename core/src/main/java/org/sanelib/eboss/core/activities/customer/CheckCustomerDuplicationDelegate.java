@@ -28,7 +28,7 @@ public class CheckCustomerDuplicationDelegate implements JavaDelegate {
         Object command = execution.getVariable("command");
         ProcessError processError = (ProcessError) execution.getVariable("errors");
 
-        Integer existingCustomerId = (command instanceof UpdateCustomer) ? ((UpdateCustomer) command).getId() : null;
+        Long existingCustomerId = (command instanceof UpdateCustomer) ? ((UpdateCustomer) command).getId() : null;
 
         //Name duplication check
         String customerName = ((AddCustomer) command).getName();
