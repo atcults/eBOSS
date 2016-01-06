@@ -15,7 +15,7 @@ public class AddEmployeeProcessTest extends BaseSpringJUnitTest {
 	@Test
 	public void testAddEmployeeProcessTest() throws Throwable {
         AddEmployee addEmployee = new AddEmployee();
-        addEmployee.setCode("101");
+        addEmployee.setCode("000");
         addEmployee.setFirstName("fName");
         addEmployee.setMiddleName("mName");
         addEmployee.setLastName("lName");
