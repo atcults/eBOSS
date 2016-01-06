@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -45,5 +46,10 @@ public class EmployeeService extends ApiServiceBase {
     @POST
     public String addEmployee(EmployeeDTO employeeDTO) throws Throwable {
         return execute(employeeDTO, ActivitiProcessConstants.Admin.ADD_EMPLOYEE);
+    }
+
+    @PUT
+    public String updateEmployee(EmployeeDTO employeeDTO) throws Throwable {
+        return execute(employeeDTO, ActivitiProcessConstants.Admin.UPDATE_EMPLOYEE);
     }
 }

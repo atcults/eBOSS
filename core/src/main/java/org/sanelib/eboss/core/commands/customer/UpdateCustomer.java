@@ -1,10 +1,11 @@
-package org.sanelib.eboss.core.commands.employee;
+package org.sanelib.eboss.core.commands.customer;
 
 import org.sanelib.eboss.core.commands.ProcessCommandWithId;
-import org.sanelib.eboss.core.domain.entity.Employee;
+import org.sanelib.eboss.core.domain.entity.Customer;
 
-public class UpdateEmployee extends AddEmployee implements ProcessCommandWithId {
-	private Long id;
+public class UpdateCustomer extends AddCustomer implements ProcessCommandWithId {
+
+    private Long id;
 
     public Long getId() {
         return id;
@@ -16,14 +17,13 @@ public class UpdateEmployee extends AddEmployee implements ProcessCommandWithId 
 
     @Override
     public Class getRootEntityClass() {
-        return Employee.class;
+        return Customer.class;
     }
 
     @Override
     public String toString() {
-        return "UpdateEmployee{" +
+        return "UpdateCustomer{" +
                 "id=" + id +
-                "} " + super.toString();
+                '}';
     }
 }
-

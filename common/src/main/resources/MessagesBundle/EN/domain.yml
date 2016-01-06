@@ -1,5 +1,7 @@
-employee:
+common:
   id: ID
+
+employee:
   name: Employee
   code: Employee Code
   email: Email
@@ -7,7 +9,6 @@ employee:
   lastName: LastName
 
 customer:
-  id: ID
   name: Name
   country: Country
   phone: Phone
