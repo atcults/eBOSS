@@ -42,7 +42,7 @@ public class UpdateEmployeeConverterTest {
         assertTrue("Conversion error occurred", processError.isValid());
         assertTrue("Wrong output " + command, command instanceof UpdateEmployee);
         UpdateEmployee updateEmployee = (UpdateEmployee) command;
-        assertEquals("Id is not mapped", dto.getId() , Integer.toString(updateEmployee.getId()));
+        assertEquals("Id is not mapped", dto.getId(), Long.toString(updateEmployee.getId()));
         assertEquals("Code is not mapped", dto.getCode(), updateEmployee.getCode());
         assertEquals("firstName is not mapped", dto.getFirstName(), updateEmployee.getFirstName());
         assertEquals("middleName is not mapped", dto.getMiddleName(), updateEmployee.getMiddleName());
