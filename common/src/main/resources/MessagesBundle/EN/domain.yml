@@ -12,3 +12,8 @@ customer:
   country: Country
   phone: Phone
   email: Email
+
+user:
+ id: ID
+ username: username
+ password: password
