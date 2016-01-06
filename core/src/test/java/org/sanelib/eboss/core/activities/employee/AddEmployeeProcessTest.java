@@ -15,7 +15,7 @@ public class AddEmployeeProcessTest extends BaseSpringJUnitTest {
 	@Test
 	public void testAddEmployeeProcessTest() throws Throwable {
         AddEmployee addEmployee = new AddEmployee();
-        addEmployee.setCode("101");
+        addEmployee.setCode("000");
         addEmployee.setFirstName("fName");
         addEmployee.setMiddleName("mName");
         addEmployee.setLastName("lName");
@@ -39,7 +39,7 @@ public class AddEmployeeProcessTest extends BaseSpringJUnitTest {
 
         Long id = Long.parseLong(result);
 
-        Employee employee = load(Employee.class, id);
+        Employee employee = fetch(Employee.class, id);
 
         assertNotNull(employee);
 

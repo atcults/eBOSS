@@ -2,7 +2,6 @@ package org.sanelib.eboss.api.converters.customer;
 
 import org.junit.Test;
 import org.sanelib.eboss.api.dto.customer.CustomerDTO;
-import org.sanelib.eboss.common.utils.ReflectionHelper;
 import org.sanelib.eboss.core.commands.ProcessCommand;
 import org.sanelib.eboss.core.commands.customer.AddCustomer;
 import org.sanelib.eboss.core.commands.customer.UpdateCustomer;
@@ -36,7 +35,7 @@ public class UpdateCustomerConverterTest {
         assertTrue("Conversion error occurred", processError.isValid());
         assertTrue("Wrong output " + command, command instanceof AddCustomer);
         UpdateCustomer updateCustomer = (UpdateCustomer) command;
-        assertEquals("Id is not mapped", dto.getId(),Integer.toString(updateCustomer.getId()));
+        assertEquals("Id is not mapped", dto.getId(), Long.toString(updateCustomer.getId()));
         assertEquals("Name is not mapped", dto.getName(),updateCustomer.getName());
         assertEquals("Contact Person Name is not mapped", dto.getContactPersonName(),updateCustomer.getContactPersonName());
         assertEquals("Address is not mapped", dto.getAddress(),updateCustomer.getAddress());

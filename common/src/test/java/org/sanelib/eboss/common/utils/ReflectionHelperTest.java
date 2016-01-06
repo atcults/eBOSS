@@ -1,7 +1,6 @@
 package org.sanelib.eboss.common.utils;
 
 import org.junit.Test;
-import org.sanelib.eboss.common.properties.AppProperties;
 
 import static org.junit.Assert.assertEquals;
 

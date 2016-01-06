@@ -28,7 +28,7 @@ public class CheckEmployeeDuplicationDelegate implements JavaDelegate {
         Object command = execution.getVariable("command");
         ProcessError processError = (ProcessError) execution.getVariable("errors");
 
-        Integer existingEmployeeId = (command instanceof UpdateEmployee) ? ((UpdateEmployee) command).getId() : null;
+        Long existingEmployeeId = (command instanceof UpdateEmployee) ? ((UpdateEmployee) command).getId() : null;
 
         //Code duplication check
         String employeeCode = ((AddEmployee) command).getCode();
