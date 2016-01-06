@@ -32,10 +32,18 @@ public class AddCustomerProcessTest extends BaseSpringJUnitTest {
 
         Long id = Long.parseLong(result);
 
-        Customer customer = load(Customer.class, id);
+        Customer customer = fetch(Customer.class, id);
 
         assertNotNull(customer);
 
         assertEquals(addCustomer.getName(), customer.getName());
+        assertEquals(addCustomer.getContactPersonName(), customer.getContactPersonName());
+        assertEquals(addCustomer.getAddress(),customer.getAddress());
+        assertEquals(addCustomer.getCountry(),customer.getCountry());
+        assertEquals(addCustomer.getPhone(),customer.getPhone());
+        assertEquals(addCustomer.getEmail(),customer.getEmail());
+        assertEquals(addCustomer.getFax(),customer.getFax());
+        assertEquals(addCustomer.getWebsite(),customer.getWebsite());
+        assertEquals(addCustomer.getNotes(),customer.getNotes());
     }
 }

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class AddCustomerConverter implements DtoToCommandConverter<CustomerDTO> {
 
     @Override
-    public ProcessCommand convert(CustomerDTO dto, ProcessError processError) {
+    public ProcessCommand convert(CustomerDTO dto, ProcessError processError) throws NoSuchFieldException, IllegalAccessException {
 
         AddCustomer command=new AddCustomer();
 
