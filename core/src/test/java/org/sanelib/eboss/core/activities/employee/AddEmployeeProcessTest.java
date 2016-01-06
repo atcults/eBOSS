@@ -39,7 +39,7 @@ public class AddEmployeeProcessTest extends BaseSpringJUnitTest {
 
         Long id = Long.parseLong(result);
 
-        Employee employee = load(Employee.class, id);
+        Employee employee = fetch(Employee.class, id);
 
         assertNotNull(employee);
 

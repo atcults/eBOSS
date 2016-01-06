@@ -89,8 +89,8 @@ public abstract class BaseSpringJUnitTest {
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
-    public <T> T load(Class klass, Serializable id) {
-        return (T) this.unitOfWork.getCurrentSession().load(klass, id);
+    public <T> T fetch(Class klass, Serializable id) {
+        return (T) this.unitOfWork.getCurrentSession().get(klass, id);
     }
 
     public void persist(BaseEntity entity) {
