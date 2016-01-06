@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema"
+             expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef"
+             xmlns:modeler="http://activiti.com/modeler" modeler:version="1.0ev" modeler:exportDateTime="20160105112256"
+             modeler:modelId="968931" modeler:modelVersion="1" modeler:modelLastUpdated="1451992960730">
+  <process id="addClientProcess" name="addClientProcess" isExecutable="true">
+    <documentation>To process add client command</documentation>
+    <startEvent id="startAddClientProcess" name="start"/>
+    <serviceTask id="processAddClientID" name="processAddClientProcess" activiti:delegateExpression="${processAddClientDelegate}"/>
+    <endEvent id="endProcessID" name="end"/>
+    <sequenceFlow id="sid-BE5C84C0-DC22-49DE-B3DC-46DFC80A8108" sourceRef="startAddClientProcess" targetRef="processAddClientID"/>
+    <sequenceFlow id="sid-25F68C26-08D4-4372-832C-C059D7BD3CE5" sourceRef="processAddClientID" targetRef="endProcessID"/>
+  </process>
+</definitions>
