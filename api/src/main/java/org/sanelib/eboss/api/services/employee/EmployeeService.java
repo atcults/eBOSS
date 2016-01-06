@@ -46,4 +46,9 @@ public class EmployeeService extends ApiServiceBase {
     public String addEmployee(EmployeeDTO employeeDTO) throws Throwable {
         return execute(employeeDTO, ActivitiProcessConstants.Admin.ADD_EMPLOYEE);
     }
+
+    @PUT
+    public String updateEmployee(EmployeeDTO employeeDTO) throws Throwable {
+        return execute(employeeDTO, ActivitiProcessConstants.Admin.UPDATE_EMPLOYEE);
+    }
 }
