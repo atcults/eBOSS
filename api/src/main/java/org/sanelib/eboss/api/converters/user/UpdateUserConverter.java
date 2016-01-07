@@ -7,7 +7,9 @@ import org.sanelib.eboss.core.commands.ProcessCommand;
 import org.sanelib.eboss.core.commands.user.AddUser;
 import org.sanelib.eboss.core.commands.user.UpdateUser;
 import org.sanelib.eboss.core.exceptions.ProcessError;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UpdateUserConverter extends AddUserConverter{
 
     @Override
