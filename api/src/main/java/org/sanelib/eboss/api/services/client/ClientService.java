@@ -6,10 +6,7 @@ import org.sanelib.eboss.api.services.ApiServiceBase;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +37,11 @@ public class ClientService extends ApiServiceBase {
     @POST
     public String addClient(ClientDTO clientDTO) throws Throwable {
         return execute(clientDTO, ActivitiProcessConstants.Admin.ADD_CLIENT);
+    }
+
+    @PUT
+    public String updateClient(ClientDTO clientDTO) throws Throwable {
+        return execute(clientDTO, ActivitiProcessConstants.Admin.UPDATE_CLIENT);
     }
 
 }
