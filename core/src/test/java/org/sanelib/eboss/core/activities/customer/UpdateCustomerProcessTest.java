@@ -27,7 +27,7 @@ public class UpdateCustomerProcessTest extends BaseSpringJUnitTest {
         update.setWebsite("www.google.com");
         update.setNotes("New Customer");
 
-        String result = execute(update, ActivitiProcessConstants.Admin.ADD_CUSTOMER);
+        String result = execute(update, ActivitiProcessConstants.Admin.UPDATE_CUSTOMER);
 
         assertNotNull(result);
         assertTrue(RegularExpressionHelper.checkIdFormat(result));

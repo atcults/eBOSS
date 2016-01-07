@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.sanelib.eboss.core.commands.customer.AddCustomer;
+import org.sanelib.eboss.core.commands.customer.UpdateCustomer;
 import org.sanelib.eboss.core.dao.CustomerRepository;
 import org.sanelib.eboss.core.domain.entity.Customer;
 
@@ -27,19 +28,19 @@ public class ProcessUpdateCustomerDelegateTest {
 
         Mockito.doNothing().when(customerRepositoryMock).save(Mockito.isA(Customer.class));
 
-        AddCustomer addCustomerCommand = new AddCustomer();
-        addCustomerCommand.setName("Megha Patel");
-        addCustomerCommand.setContactPersonName("Priya Mehta");
-        addCustomerCommand.setAddress("2, Soft Colony, Mangrol,Gujarat");
-        addCustomerCommand.setCountry("India");
-        addCustomerCommand.setPhone("+91-9876543210");
-        addCustomerCommand.setEmail("megh@yahoo.com");
-        addCustomerCommand.setFax("76543211");
-        addCustomerCommand.setWebsite("www.google.com");
-        addCustomerCommand.setNotes("New Customer");
+        UpdateCustomer updateCustomer = new UpdateCustomer();
+        updateCustomer.setName("Megha Patel");
+        updateCustomer.setContactPersonName("Priya Mehta");
+        updateCustomer.setAddress("2, Soft Colony, Mangrol,Gujarat");
+        updateCustomer.setCountry("India");
+        updateCustomer.setPhone("+91-9876543210");
+        updateCustomer.setEmail("megh@yahoo.com");
+        updateCustomer.setFax("76543211");
+        updateCustomer.setWebsite("www.google.com");
+        updateCustomer.setNotes("New Customer");
 
         DelegateExecution execution = Mockito.mock(DelegateExecution.class);
-        Mockito.when(execution.getVariable("command")).thenReturn(addCustomerCommand);
+        Mockito.when(execution.getVariable("command")).thenReturn(updateCustomer);
 
     }
 
