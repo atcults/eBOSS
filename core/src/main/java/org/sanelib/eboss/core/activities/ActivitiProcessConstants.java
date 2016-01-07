@@ -9,6 +9,8 @@ public class ActivitiProcessConstants {
         public static final String ADD_CUSTOMER = "addCustomer";
         public static final String ADD_CLIENT = "addClient";
         public static final String DELETE_CLIENT = "deleteClient";
+        public static final String UPDATE_CLIENT = "updateClient";
+
     }
 
 }
