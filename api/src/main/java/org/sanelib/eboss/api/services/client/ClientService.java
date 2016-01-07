@@ -24,6 +24,7 @@ public class ClientService extends ApiServiceBase {
 
         List<ClientDTO> list = new ArrayList<>();
         ClientDTO clientDTO = new ClientDTO();
+        clientDTO.setClientId("CL001");
         clientDTO.setClientSecret("secret");
         clientDTO.setClientName("WEB");
         clientDTO.setDescription("Desciption");
