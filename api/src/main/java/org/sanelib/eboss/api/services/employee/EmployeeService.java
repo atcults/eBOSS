@@ -5,12 +5,9 @@ import org.sanelib.eboss.api.services.ApiEndPointConstants;
 import org.sanelib.eboss.api.services.ApiServiceBase;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,5 +48,13 @@ public class EmployeeService extends ApiServiceBase {
     @PUT
     public String updateEmployee(EmployeeDTO employeeDTO) throws Throwable {
         return execute(employeeDTO, ActivitiProcessConstants.Admin.UPDATE_EMPLOYEE);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public String deleteEmployee(@PathParam("id") String id) throws Throwable {
+        EmployeeDTO employeeDTO = new EmployeeDTO();
+        employeeDTO.setId(id);
+        return execute(employeeDTO, ActivitiProcessConstants.Admin.DELETE_EMPLOYEE);
     }
 }
