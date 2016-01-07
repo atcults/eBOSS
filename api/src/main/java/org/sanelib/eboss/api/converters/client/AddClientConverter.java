@@ -8,7 +8,9 @@ import org.sanelib.eboss.common.utils.DateHelper;
 import org.sanelib.eboss.core.commands.ProcessCommand;
 import org.sanelib.eboss.core.commands.client.AddClient;
 import org.sanelib.eboss.core.exceptions.ProcessError;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AddClientConverter implements DtoToCommandConverter<ClientDTO> {
 
     @Override
