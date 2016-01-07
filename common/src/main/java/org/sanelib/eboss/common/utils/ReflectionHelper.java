@@ -1,6 +1,7 @@
 package org.sanelib.eboss.common.utils;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +17,9 @@ public class ReflectionHelper {
         while(srcClass.getSuperclass() != null){
             Field[] fromFields = srcClass.getDeclaredFields();
             for (Field field : fromFields){
+                if(Modifier.isFinal(field.getModifiers())){
+                    continue;
+                }
                 field.setAccessible(true);
                 Object value = field.get(src);
                 srcFields.put(field, value);
@@ -28,6 +32,9 @@ public class ReflectionHelper {
         while(destClass.getSuperclass() != null){
             Field[] fromFields = destClass.getDeclaredFields();
             for (Field field : fromFields){
+                if(Modifier.isFinal(field.getModifiers())){
+                    continue;
+                }
                 field.setAccessible(true);
                 destFields.put(field.getName(), field);
             }
