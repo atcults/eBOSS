@@ -17,6 +17,8 @@ public class AddClientConverterTest {
     public void testAddClientSuccessExecute() throws Exception {
 
         ClientDTO dto=new ClientDTO();
+        dto.setId("1");
+        dto.setClientId("CL001");
         dto.setClientSecret("secret");
         dto.setClientName("WEB");
         dto.setDescription("Description");
@@ -32,10 +34,10 @@ public class AddClientConverterTest {
         ProcessCommand command = addClientConverter.convert(dto, processError);
 
         assertTrue("Conversion error occurred", processError.isValid());
-
         assertTrue("Wrong output " + command, command instanceof AddClient);
         AddClient addClient = (AddClient) command;
 
+        assertEquals(dto.getClientId(),addClient.getClientId());
         assertEquals(dto.getClientSecret(), addClient.getClientSecret());
         assertEquals(dto.getClientName(),addClient.getClientName());
         assertEquals(dto.getDescription(),addClient.getDescription());
