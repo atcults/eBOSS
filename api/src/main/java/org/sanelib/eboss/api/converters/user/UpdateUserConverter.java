@@ -21,7 +21,7 @@ public class UpdateUserConverter extends AddUserConverter{
             processError.addError("common.field.required", "id" , "domain.user.id");
         }
         else{
-            updateUser.setId(Integer.valueOf(userDTO.getId()));
+            updateUser.setId(Long.valueOf(userDTO.getId()));
         }
 
         return updateUser;
