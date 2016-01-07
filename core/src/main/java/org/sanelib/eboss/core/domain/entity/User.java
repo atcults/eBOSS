@@ -7,7 +7,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@SequenceGenerator(name = "sequence" , sequenceName = "id_seq")
 @Table(name = "app_user")
 public class User extends BaseEntity{
 
@@ -36,6 +35,3 @@ public class User extends BaseEntity{
         this.password = password;
     }
 }
-
-
-
