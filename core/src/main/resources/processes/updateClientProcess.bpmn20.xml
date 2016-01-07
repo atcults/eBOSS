@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef" xmlns:modeler="http://activiti.com/modeler" modeler:version="1.0ev" modeler:exportDateTime="20160106172515" modeler:modelId="969986" modeler:modelVersion="1" modeler:modelLastUpdated="1452101094394">
+  <process id="updateClientProcess" name="updateClientProcess" isExecutable="true">
+    <documentation>Activiti to update Client Process</documentation>
+    <startEvent id="startUpdateClient" name="start"/>
+    <serviceTask id="serviceCheckDuplicateId" name="Duplicate Check" activiti:delegateExpression="${checkClientDuplicationDelegate}"/>
+    <serviceTask id="serviceUpdateEmployee" name="Update Client Process" activiti:delegateExpression="${processUpdateClientDelegate}"/>
+    <sequenceFlow id="sid-8254A144-B12F-4192-9C87-64A0FC784300" sourceRef="serviceCheckDuplicateId" targetRef="serviceUpdateEmployee"/>
+    <endEvent id="endUpdateClient" name="End"/>
+    <sequenceFlow id="sid-83259C22-8EE0-4C70-9A7C-D061DFB79565" sourceRef="serviceUpdateEmployee" targetRef="endUpdateClient"/>
+    <serviceTask id="IdExistCheck" name="ID Exists Process" activiti:delegateExpression="${checkEntityExistsDelegate}"/>
+    <sequenceFlow id="sid-117D276E-1FCB-47D4-954E-1A3403238700" sourceRef="startUpdateClient" targetRef="IdExistCheck"/>
+    <sequenceFlow id="sid-0234E01D-F4A6-4FD7-8D06-5CA077996C71" sourceRef="IdExistCheck" targetRef="serviceCheckDuplicateId"/>
+  </process>
+
+</definitions>
