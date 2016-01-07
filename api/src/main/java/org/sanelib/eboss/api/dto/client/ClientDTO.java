@@ -5,33 +5,42 @@ import org.sanelib.eboss.api.dto.BaseDTO;
 
 public class ClientDTO extends BaseDTO {
 
-    private String client_secret;
-    private String client_name;
+    private String clientId;
+    private String clientSecret;
+    private String clientName;
     private String description;
-    private String client_url;
-    private String client_type;
+    private String clientUrl;
+    private String clientType;
     private String scope;
-    private String redirect_uri;
+    private String redirectUri;
     private String regdate;
 
     public ClientDTO(){
 
     }
 
-    public String getClient_secret() {
-        return client_secret;
+    public String getClientId() {
+        return clientId;
     }
 
-    public void setClient_secret(String client_secret) {
-        this.client_secret = client_secret;
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
     }
 
-    public String getClient_name() {
-        return client_name;
+    public String getClientSecret() {
+        return clientSecret;
     }
 
-    public void setClient_name(String client_name) {
-        this.client_name = client_name;
+    public void setClientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
     public String getDescription() {
@@ -42,20 +51,20 @@ public class ClientDTO extends BaseDTO {
         this.description = description;
     }
 
-    public String getClient_url() {
-        return client_url;
+    public String getClientUrl() {
+        return clientUrl;
     }
 
-    public void setClient_url(String client_url) {
-        this.client_url = client_url;
+    public void setClientUrl(String clientUrl) {
+        this.clientUrl = clientUrl;
     }
 
-    public String getClient_type() {
-        return client_type;
+    public String getClientType() {
+        return clientType;
     }
 
-    public void setClient_type(String client_type) {
-        this.client_type = client_type;
+    public void setClientType(String clientType) {
+        this.clientType = clientType;
     }
 
     public String getScope() {
@@ -66,12 +75,12 @@ public class ClientDTO extends BaseDTO {
         this.scope = scope;
     }
 
-    public String getRedirect_uri() {
-        return redirect_uri;
+    public String getRedirectUri() {
+        return redirectUri;
     }
 
-    public void setRedirect_uri(String redirect_uri) {
-        this.redirect_uri = redirect_uri;
+    public void setRedirectUri(String redirectUri) {
+        this.redirectUri = redirectUri;
     }
 
     public String getRegdate() {
@@ -85,13 +94,14 @@ public class ClientDTO extends BaseDTO {
     @Override
     public String toString() {
         return "ClientDTO{" +
-                " client_secret='" + client_secret + '\'' +
-                ", client_name='" + client_name + '\'' +
+                "clientId='" + clientId + '\'' +
+                ", clientSecret='" + clientSecret + '\'' +
+                ", clientName='" + clientName + '\'' +
                 ", description='" + description + '\'' +
-                ", client_url='" + client_url + '\'' +
-                ", client_type='" + client_type + '\'' +
+                ", clientUrl='" + clientUrl + '\'' +
+                ", clientType='" + clientType + '\'' +
                 ", scope='" + scope + '\'' +
-                ", redirect_uri='" + redirect_uri + '\'' +
+                ", redirectUri='" + redirectUri + '\'' +
                 ", regdate='" + regdate + '\'' +
                 '}';
     }

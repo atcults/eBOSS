@@ -24,13 +24,13 @@ public class ClientService extends ApiServiceBase {
 
         List<ClientDTO> list = new ArrayList<>();
         ClientDTO clientDTO = new ClientDTO();
-        clientDTO.setClient_secret("secret");
-        clientDTO.setClient_name("WEB");
+        clientDTO.setClientSecret("secret");
+        clientDTO.setClientName("WEB");
         clientDTO.setDescription("Desciption");
-        clientDTO.setClient_url("url");
-        clientDTO.setClient_type("type");
+        clientDTO.setClientUrl("url");
+        clientDTO.setClientType("type");
         clientDTO.setScope("scope");
-        clientDTO.setRedirect_uri("redirect");
+        clientDTO.setRedirectUri("redirect");
         clientDTO.setRegdate("2005/07/01");
         list.add(clientDTO);
         return list;

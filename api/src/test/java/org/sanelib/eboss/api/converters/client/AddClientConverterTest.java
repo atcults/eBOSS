@@ -17,13 +17,13 @@ public class AddClientConverterTest {
     public void testAddClientSuccessExecute() throws Exception {
 
         ClientDTO dto=new ClientDTO();
-        dto.setClient_secret("secret");
-        dto.setClient_name("WEB");
+        dto.setClientSecret("secret");
+        dto.setClientName("WEB");
         dto.setDescription("Description");
-        dto.setClient_url("url");
-        dto.setClient_type("type");
+        dto.setClientUrl("url");
+        dto.setClientType("type");
         dto.setScope("Scope");
-        dto.setRedirect_uri("redirect");
+        dto.setRedirectUri("redirect");
         dto.setRegdate("2005/04/01");
 
         ProcessError processError = new ProcessError();
@@ -36,13 +36,13 @@ public class AddClientConverterTest {
         assertTrue("Wrong output " + command, command instanceof AddClient);
         AddClient addClient = (AddClient) command;
 
-        assertEquals(dto.getClient_secret(), addClient.getClient_secret());
-        assertEquals(dto.getClient_name(),addClient.getClient_name());
+        assertEquals(dto.getClientSecret(), addClient.getClientSecret());
+        assertEquals(dto.getClientName(),addClient.getClientName());
         assertEquals(dto.getDescription(),addClient.getDescription());
-        assertEquals(dto.getClient_url(),addClient.getClient_url());
-        assertEquals(dto.getClient_type(),addClient.getClient_type());
+        assertEquals(dto.getClientUrl(),addClient.getClientUrl());
+        assertEquals(dto.getClientType(),addClient.getClientType());
         assertEquals(dto.getScope(),addClient.getScope());
-        assertEquals(dto.getRedirect_uri(),addClient.getRedirect_uri());
+        assertEquals(dto.getRedirectUri(),addClient.getRedirectUri());
         assertEquals(dto.getRegdate(), DateHelper.toDateString((addClient.getRegdate())));
 
     }
