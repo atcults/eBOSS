@@ -12,42 +12,49 @@ import org.sanelib.eboss.core.exceptions.ProcessError;
 public class AddClientConverter implements DtoToCommandConverter<ClientDTO> {
 
     @Override
-    public ProcessCommand convert(ClientDTO dto, ProcessError processError) {
+    public ProcessCommand convert(ClientDTO dto, ProcessError processError) throws NoSuchFieldException, IllegalAccessException {
 
         AddClient command= new AddClient();
 
-        if(Strings.isNullOrEmpty(dto.getClient_secret())){
-            processError.addError("common.field.required", "client_secret", "domain.customer.client_name");
+        if(Strings.isNullOrEmpty(dto.getClientId())){
+            processError.addError("common.field.required", "client_id", "domain.customer.client_id");
 
         }else{
-            command.setClient_secret(dto.getClient_secret());
+            command.setClientId(dto.getClientId());
         }
 
-        if(Strings.isNullOrEmpty(dto.getClient_name())){
+        if(Strings.isNullOrEmpty(dto.getClientSecret())){
+            processError.addError("common.field.required", "client_secret", "domain.customer.client_secret");
+
+        }else{
+            command.setClientSecret(dto.getClientSecret());
+        }
+
+        if(Strings.isNullOrEmpty(dto.getClientName())){
             processError.addError("common.field.required", "client_name", "domain.customer.client_name");
 
         }else{
-            command.setClient_name(dto.getClient_name());
+            command.setClientName(dto.getClientName());
         }
 
         command.setDescription(dto.getDescription());
 
-        if(Strings.isNullOrEmpty(dto.getClient_url())){
+        if(Strings.isNullOrEmpty(dto.getClientUrl())){
             processError.addError("common.field.required", "client_url", "domain.customer.client_url");
 
         }else{
-            command.setClient_url(dto.getClient_url());
+            command.setClientUrl(dto.getClientUrl());
         }
 
-        if(Strings.isNullOrEmpty(dto.getClient_type())){
+        if(Strings.isNullOrEmpty(dto.getClientType())){
             processError.addError("common.field.required", "client_type", "domain.customer.client_type");
 
         }else{
-            command.setClient_type(dto.getClient_type());
+            command.setClientType(dto.getClientType());
         }
 
         command.setScope(dto.getScope());
-        command.setRedirect_uri(dto.getRedirect_uri());
+        command.setRedirectUri(dto.getRedirectUri());
 
         if(Strings.isNullOrEmpty(dto.getRegdate())){
             processError.addError("common.field.required", "regdate", "domain.customer.regdate");
