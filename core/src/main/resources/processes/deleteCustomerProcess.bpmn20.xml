@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef" xmlns:modeler="http://activiti.com/modeler" modeler:version="1.0ev" modeler:exportDateTime="20160107090021" modeler:modelId="969995" modeler:modelVersion="1" modeler:modelLastUpdated="1452157206200">
+  <process id="deleteCustomerProcess" name="deleteCustomerProcess" isExecutable="true">
+    <documentation>Activiti for deleting customer</documentation>
+    <startEvent id="startDelete" name="Start"/>
+    <serviceTask id="serviceIdExistCheck" name="Customer ID Exists" activiti:delegateExpression="${checkEntityExistsDelegate}"/>
+    <serviceTask id="serviceDeleteProcess" name="Delete Customer" activiti:delegateExpression="${processDeleteCustomerDelegate}"/>
+    <endEvent id="serviceCustomerDeleteEnd" name="End"/>
+    <sequenceFlow id="sid-8B9D926A-40C3-411D-9AC8-47D8599E3202" sourceRef="startDelete" targetRef="serviceIdExistCheck"/>
+    <sequenceFlow id="sid-D56E3CB0-E5DA-436C-8C9E-1E439AB6093E" sourceRef="serviceIdExistCheck" targetRef="serviceDeleteProcess"/>
+    <sequenceFlow id="sid-75D89C81-2626-408A-9BAD-4A86D670D078" sourceRef="serviceDeleteProcess" targetRef="serviceCustomerDeleteEnd"/>
+  </process>
+
+</definitions>
