@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
 import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,5 +54,13 @@ public class UserService extends ApiServiceBase {
     @PUT
     public String updateUser(UserDTO userDTO) throws Throwable {
         return execute(userDTO, ActivitiProcessConstants.Admin.UPDATE_USER);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public String deleteEmployee(@PathParam("id") String id) throws Throwable {
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(id);
+        return execute(userDTO, ActivitiProcessConstants.Admin.DELETE_USER);
     }
 }
