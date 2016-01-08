@@ -21,6 +21,7 @@ public class ClientService extends ApiServiceBase {
 
         List<ClientDTO> list = new ArrayList<>();
         ClientDTO clientDTO = new ClientDTO();
+        clientDTO.setId("1");
         clientDTO.setClientId("CL001");
         clientDTO.setClientSecret("secret");
         clientDTO.setClientName("WEB");
@@ -42,6 +43,14 @@ public class ClientService extends ApiServiceBase {
     @PUT
     public String updateClient(ClientDTO clientDTO) throws Throwable {
         return execute(clientDTO, ActivitiProcessConstants.Admin.UPDATE_CLIENT);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public String deleteClient(@PathParam("id") String id) throws Throwable {
+        ClientDTO clientDTO = new ClientDTO();
+        clientDTO.setId(id);
+        return execute(clientDTO, ActivitiProcessConstants.Admin.DELETE_CLIENT);
     }
 
 }
