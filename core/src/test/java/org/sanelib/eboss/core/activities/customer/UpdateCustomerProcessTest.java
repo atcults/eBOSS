@@ -3,7 +3,7 @@ package org.sanelib.eboss.core.activities.customer;
 
 import org.junit.Test;
 import org.sanelib.eboss.common.utils.RegularExpressionHelper;
-import org.sanelib.eboss.BaseSpringJUnitTest;
+import org.sanelib.eboss.EntityIntegrationTestBase;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.sanelib.eboss.core.commands.customer.UpdateCustomer;
 import org.sanelib.eboss.core.domain.entity.Customer;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class UpdateCustomerProcessTest extends BaseSpringJUnitTest {
+public class UpdateCustomerProcessTest extends EntityIntegrationTestBase {
     @Test
     public void testUpdateCustomerProcessTest() throws Throwable {
         UpdateCustomer update = new UpdateCustomer();
