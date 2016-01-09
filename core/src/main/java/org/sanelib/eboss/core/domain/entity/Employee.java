@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "employee")
-public class Employee extends BaseEntity {
+public class Employee extends EntityBase {
 
 	@Column(name = "code")
 	private String code;
