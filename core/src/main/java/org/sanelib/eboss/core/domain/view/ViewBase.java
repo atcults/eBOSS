@@ -11,9 +11,6 @@ public abstract class ViewBase implements DomainView {
 	}
 
 	public void setId(long id) {
-		if (this.id != 0 && this.id != id) {
-			throw new IllegalStateException("The ID must not be changed after it is set.");
-		}
 		this.id = id;
 	}
 }

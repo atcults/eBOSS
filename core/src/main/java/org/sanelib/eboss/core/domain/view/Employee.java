@@ -167,4 +167,26 @@ public class Employee extends ViewBase {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "code='" + code + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", addressLine1='" + addressLine1 + '\'' +
+                ", addressLine2='" + addressLine2 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", country='" + country + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", dateOfJoining=" + dateOfJoining +
+                ", isActive=" + isActive +
+                "} " + super.toString();
+    }
 }
