@@ -2,7 +2,7 @@ package org.sanelib.eboss.core.domain.entity;
 
 import java.io.Serializable;
 
-public interface IEntity extends Serializable {
+public interface DomainEntity extends Serializable {
 
 	long getId();
 

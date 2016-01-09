@@ -2,13 +2,10 @@ package org.sanelib.eboss.core.dao;
 
 import java.util.List;
 
-import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
-import org.sanelib.eboss.core.domain.entity.IEntity;
+import org.sanelib.eboss.core.domain.entity.DomainEntity;
 
-public interface IRepository<T extends IEntity> {
-
-	Session getSession();
+public interface EntityRepository<T extends DomainEntity> {
 
 	List<T> loadAll();
 
@@ -26,14 +23,13 @@ public interface IRepository<T extends IEntity> {
 
 	void remove(T entity);
 
-	List<T> executeQueryInHibernate(final String queryString, final String[] paramValues);
+	List<T> executeQuery(final String queryString, final String[] paramValues);
 
-	List<T> executeQueryInHibernate(final String queryString, final String[] paramValues, final Class<T> returnType);
+	List<T> executeQuery(final String queryString, final String[] paramValues, final Class<T> returnType);
 
-	List<T> executeQueryInHibernate(final String queryString, final String[] paramValues, final String[] resultColumnNames);
+	List<T> executeQuery(final String queryString, final String[] paramValues, final String[] resultColumnNames);
 
-	List<T> executeQueryInHibernate(final String queryString, final String[] paramValues, final String[] resultColumnNames,
-			final Class<T> returnType);
+	List<T> executeQuery(final String queryString, final String[] paramValues, final String[] resultColumnNames, final Class<T> returnType);
 
 	List<T> executeQueryObject(final String queryString, Class clazz);
 
@@ -53,11 +49,9 @@ public interface IRepository<T extends IEntity> {
 
 	List<T> findByColumnAndValue(final String[] columnNames, final Object[] columnValues, final int offset, final int size);
 
-	List<T> findColumnAndValueByOrder(final String[] columnNames, final Object[] columnValues, final String orderColumnName,
-			final boolean isLikeFlag, String orderType);
+	List<T> findColumnAndValueByOrder(final String[] columnNames, final Object[] columnValues, final String orderColumnName, final boolean isLikeFlag, String orderType);
 
-	List<T> findColumnAndValueByOrderPagination(final String[] columnNames, final Object[] columnValues, final String orderColumnName,
-			final boolean isLikeFlag, final String orderType, final int offset, final int size);
+	List<T> findColumnAndValueByOrderPagination(final String[] columnNames, final Object[] columnValues, final String orderColumnName, final boolean isLikeFlag, final String orderType, final int offset, final int size);
 
 	List<String> getListString(final String query);
 
