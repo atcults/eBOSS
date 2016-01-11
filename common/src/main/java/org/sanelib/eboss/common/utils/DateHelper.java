@@ -44,6 +44,10 @@ public class DateHelper {
         // Fill Test Created Date Property using TestDataHelper
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, day);
+        cal.set( Calendar.HOUR_OF_DAY, 0 );
+        cal.set( Calendar.MINUTE, 0 );
+        cal.set( Calendar.SECOND, 0 );
+        cal.set( Calendar.MILLISECOND, 0 );
         return cal.getTime();
     }
 }
