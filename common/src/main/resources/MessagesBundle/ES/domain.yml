@@ -13,3 +13,8 @@ customer:
   country: País
   phone: Teléfono
   email: Email
+
+user:
+ id: ID
+ username: nombre de usuario
+ password: clave
