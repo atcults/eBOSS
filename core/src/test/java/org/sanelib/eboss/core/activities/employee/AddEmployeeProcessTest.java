@@ -3,14 +3,14 @@ package org.sanelib.eboss.core.activities.employee;
 import org.junit.Test;
 import org.sanelib.eboss.common.utils.DateHelper;
 import org.sanelib.eboss.common.utils.RegularExpressionHelper;
-import org.sanelib.eboss.BaseSpringJUnitTest;
+import org.sanelib.eboss.EntityIntegrationTestBase;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.sanelib.eboss.core.commands.employee.AddEmployee;
 import org.sanelib.eboss.core.domain.entity.Employee;
 
 import static org.junit.Assert.*;
 
-public class AddEmployeeProcessTest extends BaseSpringJUnitTest {
+public class AddEmployeeProcessTest extends EntityIntegrationTestBase {
 
 	@Test
 	public void testAddEmployeeProcessTest() throws Throwable {
