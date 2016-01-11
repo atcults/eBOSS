@@ -2,7 +2,7 @@ package org.sanelib.eboss.core.activities.client;
 
 
 import org.junit.Test;
-import org.sanelib.eboss.BaseSpringJUnitTest;
+import org.sanelib.eboss.EntityIntegrationTestBase;
 import org.sanelib.eboss.common.utils.DateHelper;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.sanelib.eboss.core.commands.client.UpdateClient;
@@ -11,7 +11,7 @@ import org.sanelib.eboss.core.domain.entity.Client;
 
 import static org.junit.Assert.*;
 
-public class UpdateClientProcessTest extends BaseSpringJUnitTest {
+public class UpdateClientProcessTest extends EntityIntegrationTestBase {
 
     @Test
     public void testUpdateClientProcessTest() throws Throwable {
