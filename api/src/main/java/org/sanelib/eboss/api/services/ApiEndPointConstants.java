@@ -6,5 +6,6 @@ public class ApiEndPointConstants {
         public static final String EMPLOYEE_END_POINT = "/employee";
         public static final String CUSTOMER_END_POINT = "/customer";
         public static final String USER_END_POINT = "/user";
+        public static final String CLIENT_END_POINT = "/client";
     }
 }
