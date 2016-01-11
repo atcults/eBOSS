@@ -39,7 +39,7 @@ public class AddEmployeeConverter implements DtoToCommandConverter<EmployeeDTO> 
         }
 
         if(!RegularExpressionHelper.checkDateFormat(dto.getDateOfBirth())) {
-            processError.addError("common.field.pattern", "date", "domain.customer.date", RegularExpressionHelper.DATE_FORMAT_EXAMPLE);
+            processError.addError("common.field.pattern", "dateOfBirth", "domain.customer.dateOfBirth", RegularExpressionHelper.DATE_FORMAT_EXAMPLE);
         } else {
             command.setDateOfBirth(DateHelper.fromDateString(dto.getDateOfBirth()));
         }
@@ -66,7 +66,7 @@ public class AddEmployeeConverter implements DtoToCommandConverter<EmployeeDTO> 
         command.setGender(dto.getGender());
 
         if(!RegularExpressionHelper.checkDateFormat(dto.getDateOfJoining())) {
-            processError.addError("common.field.pattern", "date", "domain.customer.date", RegularExpressionHelper.DATE_FORMAT_EXAMPLE);
+            processError.addError("common.field.pattern", "dateOfJoining", "domain.customer.dateOfJoining", RegularExpressionHelper.DATE_FORMAT_EXAMPLE);
         } else {
             command.setDateOfJoining(DateHelper.fromDateString(dto.getDateOfJoining()));
         }
