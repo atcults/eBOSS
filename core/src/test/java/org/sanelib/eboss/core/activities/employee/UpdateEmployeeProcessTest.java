@@ -3,7 +3,7 @@ package org.sanelib.eboss.core.activities.employee;
 
 import org.junit.Test;
 import org.sanelib.eboss.common.utils.DateHelper;
-import org.sanelib.eboss.BaseSpringJUnitTest;
+import org.sanelib.eboss.EntityIntegrationTestBase;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.sanelib.eboss.core.commands.employee.UpdateEmployee;
 import org.sanelib.eboss.core.domain.entity.Employee;
@@ -12,10 +12,13 @@ import java.util.Date;
 
 import static org.junit.Assert.*;
 
-public class UpdateEmployeeProcessTest extends BaseSpringJUnitTest {
+public class UpdateEmployeeProcessTest extends EntityIntegrationTestBase {
 
     @Test
     public void testUpdateEmployeeProcessTest() throws Throwable {
+
+        Date dateOfBirth = DateHelper.constructDate(1990, 2, 2);
+        Date dateOfJoining = DateHelper.constructDate(2015, 6 ,2);
 
         Employee employee = new Employee();
         employee.setFirstName("Fname");
@@ -23,7 +26,7 @@ public class UpdateEmployeeProcessTest extends BaseSpringJUnitTest {
         employee.setFirstName("FName");
         employee.setMiddleName("MName");
         employee.setLastName("LName");
-        employee.setDateOfBirth(DateHelper.constructDate(1990, 2, 2));
+        employee.setDateOfBirth(dateOfBirth);
         employee.setAddressLine1("8,Shakti Park Soc");
         employee.setAddressLine2("College Road");
         employee.setCity("Nadiad");
@@ -33,13 +36,10 @@ public class UpdateEmployeeProcessTest extends BaseSpringJUnitTest {
         employee.setPhone("+91-9876543210");
         employee.setEmail("fname@gmail.com");
         employee.setGender("Male");
-        employee.setDateOfJoining(DateHelper.constructDate(2015, 6 ,2));
+        employee.setDateOfJoining(dateOfJoining);
         employee.setIsActive(true);
 
         persist(employee);
-
-        Date dateOfBirth = DateHelper.constructDate(1990, 2, 2);
-        Date dateOfJoining = DateHelper.constructDate(2015, 6 ,2);
 
         UpdateEmployee update = new UpdateEmployee();
         update.setId(employee.getId());
