@@ -13,15 +13,15 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.Transformers;
 import org.sanelib.eboss.core.domain.entity.Constants;
 import org.sanelib.eboss.core.domain.entity.DBValue;
-import org.sanelib.eboss.core.domain.entity.IEntity;
+import org.sanelib.eboss.core.domain.entity.DomainEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
-public abstract class Repository<T extends IEntity> implements IRepository<T> {
+public abstract class EntityRepositoryBase<T extends DomainEntity> implements EntityRepository<T> {
 
 	protected Class<T> entityClass;
 
-	public Repository() {
+	public EntityRepositoryBase() {
 		ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
 		this.entityClass = (Class<T>) genericSuperclass.getActualTypeArguments()[0];
 	}
@@ -37,7 +37,6 @@ public abstract class Repository<T extends IEntity> implements IRepository<T> {
 		return entityClass;
 	}
 
-	@Override
 	public Session getSession() {
 		return unitOfWork.getCurrentSession();
 	}
@@ -105,23 +104,22 @@ public abstract class Repository<T extends IEntity> implements IRepository<T> {
 	}
 
 	@Override
-	public List<T> executeQueryInHibernate(final String queryString, final String[] paramValues) {
-		return executeQueryInHibernate(queryString, paramValues, null, null);
+	public List<T> executeQuery(final String queryString, final String[] paramValues) {
+		return executeQuery(queryString, paramValues, null, null);
 	}
 
 	@Override
-	public List<T> executeQueryInHibernate(final String queryString, final String[] paramValues, final Class<T> returnType) {
-		return executeQueryInHibernate(queryString, paramValues, null, returnType);
+	public List<T> executeQuery(final String queryString, final String[] paramValues, final Class<T> returnType) {
+		return executeQuery(queryString, paramValues, null, returnType);
 	}
 
 	@Override
-	public List<T> executeQueryInHibernate(final String queryString, final String[] paramValues, final String[] resultColumnNames) {
-		return executeQueryInHibernate(queryString, paramValues, resultColumnNames, null);
+	public List<T> executeQuery(final String queryString, final String[] paramValues, final String[] resultColumnNames) {
+		return executeQuery(queryString, paramValues, resultColumnNames, null);
 	}
 
 	@Override
-	public List<T> executeQueryInHibernate(final String queryString, final String[] paramValues, final String[] resultColumnNames,
-			final Class<T> returnType) {
+	public List<T> executeQuery(final String queryString, final String[] paramValues, final String[] resultColumnNames, final Class<T> returnType) {
 
 		SQLQuery query = getSession().createSQLQuery(queryString);
 		if (returnType != null) {
@@ -180,8 +178,7 @@ public abstract class Repository<T extends IEntity> implements IRepository<T> {
 		return null;
 	}
 
-	private void prepareCriteriaWithPagination(final String[] columnNames, final Object[] columnValues, final int offset, final int size,
-			Criteria criteria, boolean useLike) {
+	private void prepareCriteriaWithPagination(final String[] columnNames, final Object[] columnValues, final int offset, final int size, Criteria criteria, boolean useLike) {
 		prepareCriteria(columnNames, columnValues, criteria, useLike);
 		addPaginationCriteria(offset, size, criteria);
 	}
@@ -239,8 +236,7 @@ public abstract class Repository<T extends IEntity> implements IRepository<T> {
 		return (List<T>) criteria.list();
 	}
 
-	private void prepareOrderByCriteria(Criteria criteria, final String[] columnNames, final Object[] columnValues,
-			final String orderColumnName, final boolean isLikeFlag, final String orderType) {
+	private void prepareOrderByCriteria(Criteria criteria, final String[] columnNames, final Object[] columnValues, final String orderColumnName, final boolean isLikeFlag, final String orderType) {
 		prepareCriteria(columnNames, columnValues, criteria, isLikeFlag);
 		if (orderType != null && orderType.equalsIgnoreCase(Constants.ASCENDING_ORDER)) {
 			criteria.addOrder(Order.asc(orderColumnName));
@@ -253,8 +249,7 @@ public abstract class Repository<T extends IEntity> implements IRepository<T> {
 	}
 
 	@Override
-	public List<T> findColumnAndValueByOrderPagination(final String[] columnNames, final Object[] columnValues,
-			final String orderColumnName, final boolean isLikeFlag, final String orderType, final int offset, final int size) {
+	public List<T> findColumnAndValueByOrderPagination(final String[] columnNames, final Object[] columnValues, final String orderColumnName, final boolean isLikeFlag, final String orderType, final int offset, final int size) {
 		Criteria criteria = getSession().createCriteria(entityClass);
 		prepareOrderByCriteria(criteria, columnNames, columnValues, orderColumnName, isLikeFlag, orderType);
 		addPaginationCriteria(offset, size, criteria);
