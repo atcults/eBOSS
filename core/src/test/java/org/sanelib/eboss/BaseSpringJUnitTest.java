@@ -14,7 +14,7 @@ import org.sanelib.eboss.common.utils.CustomClock;
 import org.sanelib.eboss.common.utils.DateHelper;
 import org.sanelib.eboss.core.commands.ProcessCommand;
 import org.sanelib.eboss.core.dao.UnitOfWork;
-import org.sanelib.eboss.core.domain.entity.BaseEntity;
+import org.sanelib.eboss.core.domain.entity.EntityBase;
 import org.sanelib.eboss.core.exceptions.ProcessError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -93,7 +93,7 @@ public abstract class BaseSpringJUnitTest {
         return (T) this.unitOfWork.getCurrentSession().get(klass, id);
     }
 
-    public void persist(BaseEntity entity) {
+    public void persist(EntityBase entity) {
         this.unitOfWork.getCurrentSession().save(entity);
     }
 }

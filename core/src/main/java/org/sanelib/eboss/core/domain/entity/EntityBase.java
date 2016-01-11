@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class BaseEntity implements IEntity {
+public abstract class EntityBase implements DomainEntity {
 
 	private static final long serialVersionUID = 1L;
 
@@ -45,6 +45,6 @@ public abstract class BaseEntity implements IEntity {
 
 	@Override
 	public boolean equals(Object o) {
-		return o != null && o.getClass() == getClass() && getPersistedId() == ((BaseEntity) o).getPersistedId();
+		return o != null && o.getClass() == getClass() && getPersistedId() == ((EntityBase) o).getPersistedId();
 	}
 }
