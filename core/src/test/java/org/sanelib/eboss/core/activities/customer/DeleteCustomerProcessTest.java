@@ -1,14 +1,14 @@
 package org.sanelib.eboss.core.activities.customer;
 
 import org.junit.Test;
-import org.sanelib.eboss.BaseSpringJUnitTest;
+import org.sanelib.eboss.EntityIntegrationTestBase;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.sanelib.eboss.core.commands.customer.DeleteCustomer;
 import org.sanelib.eboss.core.domain.entity.Customer;
 
 import static org.junit.Assert.assertNull;
 
-public class DeleteCustomerProcessTest extends BaseSpringJUnitTest {
+public class DeleteCustomerProcessTest extends EntityIntegrationTestBase {
 
     @Test
     public void testDeleteCustomerSuccess() throws Throwable {
