@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="app_client")
-public class Client extends BaseEntity {
+public class Client extends EntityBase {
 
     @Column(name="client_id")
     private String clientId;
