@@ -13,3 +13,12 @@ customer:
   country: Country
   phone: Phone
   email: Email
+
+client:
+  clientId: Client Id
+  clientName: Client Name
+  clientSecret: Client Secret
+  description: Description
+  clientUrl: Client Url
+  clientType: Client Type
+  registrationDate: Registeration date
