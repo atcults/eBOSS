@@ -13,3 +13,16 @@ customer:
   country: País
   phone: Teléfono
   email: Email
+
+user:
+ username: nombre de usuario
+ password: clave
+
+client:
+  clientId: Identificación del cliente
+  clientName: Nombre de Cliente
+  clientSecret: Cliente Secreto
+  description: Descripción
+  clientUrl: Url Cliente
+  clientType: Tipo de cliente
+  registrationDate: Fecha de registro

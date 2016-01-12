@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:activiti="http://activiti.org/bpmn"
+             typeLanguage="http://www.w3.org/2001/XMLSchema"
+             expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.activiti.org/processdef" xmlns:modeler="http://activiti.com/modeler"
+             modeler:version="1.0ev"
+             modeler:exportDateTime="20160105111356"
+             modeler:modelId="969940"
+             modeler:modelVersion="1"
+             modeler:modelLastUpdated="1451992423194">
+  <process id="deleteClientProcess" name="deleteClientProcess" isExecutable="true">
+    <documentation>This is Activiti for deleting client</documentation>
+    <startEvent id="startDelete" name="Start"/>
+    <serviceTask id="serviceIdExistCheck" name="Client ID Exists" activiti:delegateExpression="${checkEntityExistsDelegate}"/>
+    <sequenceFlow id="sid-44C1794D-DBD5-4194-8D2C-C77507F5680E" sourceRef="startDelete" targetRef="serviceIdExistCheck"/>
+    <serviceTask id="serviceDeleteProcess" name="Delete Client" activiti:delegateExpression="${processDeleteClientDelegate}"/>
+    <endEvent id="serviceClientDeleteEnd" name="End"/>
+    <sequenceFlow id="sid-308E4FBF-6CA5-4A9E-9C95-E5CC8FF88133" sourceRef="serviceIdExistCheck" targetRef="serviceDeleteProcess"/>
+    <sequenceFlow id="sid-BBABC07C-2705-4D40-BD71-951D440C2930" sourceRef="serviceDeleteProcess" targetRef="serviceClientDeleteEnd"/>
+  </process>
+
+</definitions>

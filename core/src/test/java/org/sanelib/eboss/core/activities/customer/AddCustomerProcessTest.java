@@ -2,14 +2,14 @@ package org.sanelib.eboss.core.activities.customer;
 
 import org.junit.Test;
 import org.sanelib.eboss.common.utils.RegularExpressionHelper;
-import org.sanelib.eboss.BaseSpringJUnitTest;
+import org.sanelib.eboss.EntityIntegrationTestBase;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.sanelib.eboss.core.commands.customer.AddCustomer;
 import org.sanelib.eboss.core.domain.entity.Customer;
 
 import static org.junit.Assert.*;
 
-public class AddCustomerProcessTest extends BaseSpringJUnitTest {
+public class AddCustomerProcessTest extends EntityIntegrationTestBase {
 
     @Test
     public void testAddCustomerProcessTest() throws Throwable {

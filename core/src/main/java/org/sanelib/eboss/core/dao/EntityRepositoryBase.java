@@ -33,10 +33,6 @@ public abstract class EntityRepositoryBase<T extends DomainEntity> implements En
 		this.unitOfWork = unitOfWork;
 	}
 
-	public Class<T> getEntityClass() {
-		return entityClass;
-	}
-
 	public Session getSession() {
 		return unitOfWork.getCurrentSession();
 	}

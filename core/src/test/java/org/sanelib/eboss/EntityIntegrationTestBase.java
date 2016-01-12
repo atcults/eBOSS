@@ -29,10 +29,7 @@ import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = CoreTestMain.class)
-public abstract class BaseSpringJUnitTest {
-
-    @Autowired
-    private ApplicationContext context;
+public abstract class EntityIntegrationTestBase {
 
     @Autowired
     private AppProperties appProperties;
@@ -70,7 +67,14 @@ public abstract class BaseSpringJUnitTest {
         variables.put("errors", processError);
 
         String response = null;
+
+        System.out.println("Command:" + command);
+        System.out.println("Process Name:" + processName);
+
         ProcessInstance instance = runtimeService.startProcessInstanceByKey(processName, variables);
+
+        System.out.println("instance:" + instance);
+
         Map<String, VariableInstanceEntity> variableInstances = ((ExecutionEntity) instance).getVariableInstances();
         if(variableInstances.containsKey("result")){
             response = variableInstances.get("result").getValue().toString();
@@ -95,6 +99,8 @@ public abstract class BaseSpringJUnitTest {
 
     public void persist(EntityBase entity) {
         this.unitOfWork.getCurrentSession().save(entity);
+        this.unitOfWork.flush();
+        this.unitOfWork.clear();
     }
 }
 
