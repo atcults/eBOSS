@@ -30,7 +30,7 @@ public class ClientService extends ApiServiceBase {
         clientDTO.setClientType("type");
         clientDTO.setScope("scope");
         clientDTO.setRedirectUri("redirect");
-        clientDTO.setRegdate("2005/07/01");
+        clientDTO.setRegistrationDate("2005/07/01");
         list.add(clientDTO);
         return list;
     }
