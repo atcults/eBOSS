@@ -3,13 +3,12 @@ package org.sanelib.eboss.core.domain.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
 @Table(name="app_client")
-public class Client extends BaseEntity {
+public class Client extends EntityBase {
 
     @Column(name="client_id")
     private String clientId;
@@ -35,12 +34,12 @@ public class Client extends BaseEntity {
     @Column(name="redirect_uri")
     private String redirectUri;
 
-    @Column(name="regdate")
-    private Date regdate;
+    @Column(name="reg_date")
+    private Date regDate;
 
     public Client(){}
 
-    public String getClient_id() {
+    public String getClientId() {
         return clientId;
     }
 
@@ -104,11 +103,11 @@ public class Client extends BaseEntity {
         this.redirectUri = redirectUri;
     }
 
-    public Date getRegdate() {
-        return regdate;
+    public Date getRegDate() {
+        return regDate;
     }
 
-    public void setRegdate(Date regdate) {
-        this.regdate = regdate;
+    public void setRegDate(Date regDate) {
+        this.regDate = regDate;
     }
 }

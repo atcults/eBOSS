@@ -28,7 +28,7 @@ public class AddClientProcessTest extends BaseSpringJUnitTest {
         addClient.setClientType("type");
         addClient.setScope("Scope");
         addClient.setRedirectUri("redirect");
-        addClient.setRegdate(DateHelper.fromDateString("2005/04/01"));
+        addClient.setRegDate(DateHelper.fromDateString("2005/04/01"));
 
         String result = execute(addClient, ActivitiProcessConstants.Admin.ADD_CLIENT);
 
@@ -48,7 +48,7 @@ public class AddClientProcessTest extends BaseSpringJUnitTest {
         assertEquals(addClient.getClientType(),client.getClientType());
         assertEquals(addClient.getScope(),client.getScope());
         assertEquals(addClient.getRedirectUri(),client.getRedirectUri());
-        assertEquals(addClient.getRegdate(), client.getRegdate());
+        assertEquals(addClient.getRegDate(), client.getRegDate());
 
     }
 

@@ -31,7 +31,7 @@ public class ProcessUpdateClientDelegate implements JavaDelegate {
         client.setClientType(updateClient.getClientType());
         client.setScope(updateClient.getScope());
         client.setRedirectUri(updateClient.getRedirectUri());
-        client.setRegdate(updateClient.getRegdate());
+        client.setRegDate(updateClient.getRegDate());
 
         clientRepository.update(client);
     }

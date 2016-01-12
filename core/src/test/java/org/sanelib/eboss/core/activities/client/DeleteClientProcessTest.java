@@ -24,7 +24,7 @@ public class DeleteClientProcessTest extends BaseSpringJUnitTest {
         client.setClientType("type");
         client.setScope("Scope");
         client.setRedirectUri("redirect");
-        client.setRegdate(DateHelper.fromDateString("2005/04/01"));
+        client.setRegDate(DateHelper.fromDateString("2005/04/01"));
 
         persist(client);
 

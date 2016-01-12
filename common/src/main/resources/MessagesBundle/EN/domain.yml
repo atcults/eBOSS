@@ -15,6 +15,5 @@ customer:
   email: Email
 
 user:
- id: ID
- username: username
- password: password
+  username: User Name
+  password: Password

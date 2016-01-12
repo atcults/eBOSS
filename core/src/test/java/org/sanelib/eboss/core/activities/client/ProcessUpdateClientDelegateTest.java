@@ -5,13 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.sanelib.eboss.common.utils.DateHelper;
-import org.sanelib.eboss.core.activities.employee.ProcessUpdateEmployeeDelegate;
 import org.sanelib.eboss.core.commands.client.UpdateClient;
-import org.sanelib.eboss.core.commands.employee.UpdateEmployee;
 import org.sanelib.eboss.core.dao.ClientRepository;
-import org.sanelib.eboss.core.dao.EmployeeRepository;
 import org.sanelib.eboss.core.domain.entity.Client;
-import org.sanelib.eboss.core.domain.entity.Employee;
 
 public class ProcessUpdateClientDelegateTest {
 
@@ -40,7 +36,7 @@ public class ProcessUpdateClientDelegateTest {
         updateClient.setClientType("NewType");
         updateClient.setScope("NewScope");
         updateClient.setRedirectUri("NewRedirect");
-        updateClient.setRegdate(DateHelper.fromDateString("2006/02/02"));
+        updateClient.setRegDate(DateHelper.fromDateString("2006/02/02"));
 
         DelegateExecution execution = Mockito.mock(DelegateExecution.class);
         Mockito.when(execution.getVariable("command")).thenReturn(updateClient);

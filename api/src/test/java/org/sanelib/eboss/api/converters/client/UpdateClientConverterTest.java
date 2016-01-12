@@ -44,7 +44,7 @@ public class UpdateClientConverterTest {
         assertEquals(dto.getClientType(),updateClient.getClientType());
         assertEquals(dto.getScope(),updateClient.getScope());
         assertEquals(dto.getRedirectUri(),updateClient.getRedirectUri());
-        assertEquals(dto.getRegdate(), DateHelper.toDateString((updateClient.getRegdate())));
+        assertEquals(dto.getRegdate(), DateHelper.toDateString((updateClient.getRegDate())));
 
     }
 

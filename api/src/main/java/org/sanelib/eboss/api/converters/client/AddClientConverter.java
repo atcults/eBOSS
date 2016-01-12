@@ -62,7 +62,7 @@ public class AddClientConverter implements DtoToCommandConverter<ClientDTO> {
             processError.addError("common.field.required", "regdate", "domain.customer.regdate");
 
         }else{
-            command.setRegdate(DateHelper.fromDateString((dto.getRegdate())));
+            command.setRegDate(DateHelper.fromDateString((dto.getRegdate())));
         }
 
         return command;
