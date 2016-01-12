@@ -40,7 +40,7 @@ public class ProcessUpdateClientDelegateTest {
         updateClient.setClientType("NewType");
         updateClient.setScope("NewScope");
         updateClient.setRedirectUri("NewRedirect");
-        updateClient.setRegdate(DateHelper.fromDateString("2006/02/02"));
+        updateClient.setRegistrationDate(DateHelper.fromDateString("2006/02/02"));
 
         DelegateExecution execution = Mockito.mock(DelegateExecution.class);
         Mockito.when(execution.getVariable("command")).thenReturn(updateClient);

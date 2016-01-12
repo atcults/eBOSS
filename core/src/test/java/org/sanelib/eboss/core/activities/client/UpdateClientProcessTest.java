@@ -25,7 +25,7 @@ public class UpdateClientProcessTest extends EntityIntegrationTestBase {
         client.setClientType("type");
         client.setScope("Scope");
         client.setRedirectUri("redirect");
-        client.setRegdate(DateHelper.fromDateString("2005/04/01"));
+        client.setRegistrationDate(DateHelper.fromDateString("2005/04/01"));
 
         persist(client);
 
@@ -39,7 +39,7 @@ public class UpdateClientProcessTest extends EntityIntegrationTestBase {
         updateClient.setClientType("NewType");
         updateClient.setScope("NewScope");
         updateClient.setRedirectUri("NewRedirect");
-        updateClient.setRegdate(DateHelper.fromDateString("2006/02/02"));
+        updateClient.setRegistrationDate(DateHelper.fromDateString("2006/02/02"));
 
         String result = execute(updateClient, ActivitiProcessConstants.Admin.UPDATE_CLIENT);
 
@@ -55,7 +55,7 @@ public class UpdateClientProcessTest extends EntityIntegrationTestBase {
         assertEquals("NewType",updateClient.getClientType());
         assertEquals("NewScope",updateClient.getScope());
         assertEquals("NewRedirect",updateClient.getRedirectUri());
-        assertEquals("2006/02/02",DateHelper.toDateString(updateClient.getRegdate()));
+        assertEquals("2006/02/02",DateHelper.toDateString(updateClient.getRegistrationDate()));
 
 
     }

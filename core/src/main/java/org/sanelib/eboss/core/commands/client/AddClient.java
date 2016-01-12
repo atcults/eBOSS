@@ -15,7 +15,7 @@ public class AddClient implements ProcessCommand {
     private String clientType;
     private String scope;
     private String redirectUri;
-    private Date regdate;
+    private Date registrationDate;
 
     public String getClientId() {
         return clientId;
@@ -81,11 +81,11 @@ public class AddClient implements ProcessCommand {
         this.redirectUri = redirectUri;
     }
 
-    public Date getRegdate() {
-        return regdate;
+    public Date getRegistrationDate() {
+        return registrationDate;
     }
 
-    public void setRegdate(Date regdate) {
-        this.regdate = regdate;
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
     }
 }

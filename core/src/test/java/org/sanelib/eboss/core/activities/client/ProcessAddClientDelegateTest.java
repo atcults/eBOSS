@@ -37,7 +37,7 @@ public class ProcessAddClientDelegateTest {
         addClientCommand.setClientType("type");
         addClientCommand.setScope("");
         addClientCommand.setRedirectUri("");
-        addClientCommand.setRegdate(DateHelper.fromDateString("2007/02/01"));
+        addClientCommand.setRegistrationDate(DateHelper.fromDateString("2007/02/01"));
 
 
         DelegateExecution execution = Mockito.mock(DelegateExecution.class);
