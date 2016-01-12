@@ -30,7 +30,7 @@ public class ProcessAddClientDelegate implements JavaDelegate {
         entity.setClientType(command.getClientType());
         entity.setScope(command.getScope());
         entity.setRedirectUri(command.getRedirectUri());
-        entity.setRegDate(command.getRegDate());
+        entity.setRegistrationDate(command.getRegistrationDate());
 
         clientRepository.save(entity);
         execution.setVariable("result", entity.getId());

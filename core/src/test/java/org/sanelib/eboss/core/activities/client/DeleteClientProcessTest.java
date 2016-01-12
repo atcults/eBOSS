@@ -2,7 +2,7 @@ package org.sanelib.eboss.core.activities.client;
 
 
 import org.junit.Test;
-import org.sanelib.eboss.BaseSpringJUnitTest;
+import org.sanelib.eboss.EntityIntegrationTestBase;
 import org.sanelib.eboss.common.utils.DateHelper;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.sanelib.eboss.core.commands.client.DeleteClient;
@@ -10,7 +10,7 @@ import org.sanelib.eboss.core.domain.entity.Client;
 
 import static org.junit.Assert.assertNull;
 
-public class DeleteClientProcessTest extends BaseSpringJUnitTest {
+public class DeleteClientProcessTest extends EntityIntegrationTestBase {
 
     @Test
     public void addClientProcessTest() throws Throwable {
@@ -24,7 +24,7 @@ public class DeleteClientProcessTest extends BaseSpringJUnitTest {
         client.setClientType("type");
         client.setScope("Scope");
         client.setRedirectUri("redirect");
-        client.setRegDate(DateHelper.fromDateString("2005/04/01"));
+        client.setRegistrationDate(DateHelper.fromDateString("2005/04/01"));
 
         persist(client);
 

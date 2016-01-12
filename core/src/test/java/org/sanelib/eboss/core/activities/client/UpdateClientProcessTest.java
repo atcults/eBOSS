@@ -2,7 +2,7 @@ package org.sanelib.eboss.core.activities.client;
 
 
 import org.junit.Test;
-import org.sanelib.eboss.BaseSpringJUnitTest;
+import org.sanelib.eboss.EntityIntegrationTestBase;
 import org.sanelib.eboss.common.utils.DateHelper;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.sanelib.eboss.core.commands.client.UpdateClient;
@@ -11,7 +11,7 @@ import org.sanelib.eboss.core.domain.entity.Client;
 
 import static org.junit.Assert.*;
 
-public class UpdateClientProcessTest extends BaseSpringJUnitTest {
+public class UpdateClientProcessTest extends EntityIntegrationTestBase {
 
     @Test
     public void testUpdateClientProcessTest() throws Throwable {
@@ -25,7 +25,7 @@ public class UpdateClientProcessTest extends BaseSpringJUnitTest {
         client.setClientType("type");
         client.setScope("Scope");
         client.setRedirectUri("redirect");
-        client.setRegDate(DateHelper.fromDateString("2005/04/01"));
+        client.setRegistrationDate(DateHelper.fromDateString("2005/04/01"));
 
         persist(client);
 
@@ -39,7 +39,7 @@ public class UpdateClientProcessTest extends BaseSpringJUnitTest {
         updateClient.setClientType("NewType");
         updateClient.setScope("NewScope");
         updateClient.setRedirectUri("NewRedirect");
-        updateClient.setRegDate(DateHelper.fromDateString("2006/02/02"));
+        updateClient.setRegistrationDate(DateHelper.fromDateString("2006/02/02"));
 
         String result = execute(updateClient, ActivitiProcessConstants.Admin.UPDATE_CLIENT);
 
@@ -55,7 +55,7 @@ public class UpdateClientProcessTest extends BaseSpringJUnitTest {
         assertEquals("NewType",updateClient.getClientType());
         assertEquals("NewScope",updateClient.getScope());
         assertEquals("NewRedirect",updateClient.getRedirectUri());
-        assertEquals("2006/02/02",DateHelper.toDateString(updateClient.getRegDate()));
+        assertEquals("2006/02/02",DateHelper.toDateString(updateClient.getRegistrationDate()));
 
 
     }

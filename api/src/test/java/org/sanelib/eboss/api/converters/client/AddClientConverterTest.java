@@ -26,7 +26,7 @@ public class AddClientConverterTest {
         dto.setClientType("type");
         dto.setScope("Scope");
         dto.setRedirectUri("redirect");
-        dto.setRegdate("2005/04/01");
+        dto.setRegistrationDate("2005/04/01");
 
         ProcessError processError = new ProcessError();
 
@@ -45,7 +45,7 @@ public class AddClientConverterTest {
         assertEquals(dto.getClientType(),addClient.getClientType());
         assertEquals(dto.getScope(),addClient.getScope());
         assertEquals(dto.getRedirectUri(),addClient.getRedirectUri());
-        assertEquals(dto.getRegdate(), DateHelper.toDateString((addClient.getRegDate())));
+        assertEquals(dto.getRegistrationDate(), DateHelper.toDateString((addClient.getRegistrationDate())));
 
     }
 

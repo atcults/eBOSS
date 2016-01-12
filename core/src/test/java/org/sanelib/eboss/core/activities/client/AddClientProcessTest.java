@@ -2,7 +2,7 @@ package org.sanelib.eboss.core.activities.client;
 
 
 import org.junit.Test;
-import org.sanelib.eboss.BaseSpringJUnitTest;
+import org.sanelib.eboss.EntityIntegrationTestBase;
 import org.sanelib.eboss.common.utils.DateHelper;
 import org.sanelib.eboss.common.utils.RegularExpressionHelper;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
@@ -14,7 +14,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 
-public class AddClientProcessTest extends BaseSpringJUnitTest {
+public class AddClientProcessTest extends EntityIntegrationTestBase {
 
     @Test
     public void addClientProcessTest() throws Throwable {
@@ -28,7 +28,7 @@ public class AddClientProcessTest extends BaseSpringJUnitTest {
         addClient.setClientType("type");
         addClient.setScope("Scope");
         addClient.setRedirectUri("redirect");
-        addClient.setRegDate(DateHelper.fromDateString("2005/04/01"));
+        addClient.setRegistrationDate(DateHelper.fromDateString("2005/04/01"));
 
         String result = execute(addClient, ActivitiProcessConstants.Admin.ADD_CLIENT);
 
@@ -48,7 +48,7 @@ public class AddClientProcessTest extends BaseSpringJUnitTest {
         assertEquals(addClient.getClientType(),client.getClientType());
         assertEquals(addClient.getScope(),client.getScope());
         assertEquals(addClient.getRedirectUri(),client.getRedirectUri());
-        assertEquals(addClient.getRegDate(), client.getRegDate());
+        assertEquals(addClient.getRegistrationDate(), client.getRegistrationDate());
 
     }
 

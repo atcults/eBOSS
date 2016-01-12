@@ -13,7 +13,7 @@ public class ClientDTO extends BaseDTO {
     private String clientType;
     private String scope;
     private String redirectUri;
-    private String regdate;
+    private String registrationDate;
 
     public ClientDTO(){
 
@@ -83,12 +83,12 @@ public class ClientDTO extends BaseDTO {
         this.redirectUri = redirectUri;
     }
 
-    public String getRegdate() {
-        return regdate;
+    public String getRegistrationDate() {
+        return registrationDate;
     }
 
-    public void setRegdate(String regdate) {
-        this.regdate = regdate;
+    public void setRegistrationDate(String registrationDate) {
+        this.registrationDate = registrationDate;
     }
 
     @Override
@@ -102,7 +102,7 @@ public class ClientDTO extends BaseDTO {
                 ", clientType='" + clientType + '\'' +
                 ", scope='" + scope + '\'' +
                 ", redirectUri='" + redirectUri + '\'' +
-                ", regdate='" + regdate + '\'' +
+                ", regdate='" + registrationDate + '\'' +
                 '}';
     }
 }

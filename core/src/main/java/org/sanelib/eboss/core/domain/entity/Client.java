@@ -35,7 +35,7 @@ public class Client extends EntityBase {
     private String redirectUri;
 
     @Column(name="reg_date")
-    private Date regDate;
+    private Date registrationDate;
 
     public Client(){}
 
@@ -103,11 +103,11 @@ public class Client extends EntityBase {
         this.redirectUri = redirectUri;
     }
 
-    public Date getRegDate() {
-        return regDate;
+    public Date getRegistrationDate() {
+        return registrationDate;
     }
 
-    public void setRegDate(Date regDate) {
-        this.regDate = regDate;
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
     }
 }

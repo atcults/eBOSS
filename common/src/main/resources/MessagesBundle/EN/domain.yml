@@ -17,3 +17,12 @@ customer:
 user:
   username: User Name
   password: Password
+
+client:
+  clientId: Client Id
+  clientName: Client Name
+  clientSecret: Client Secret
+  description: Description
+  clientUrl: Client Url
+  clientType: Client Type
+  registrationDate: Registeration date
