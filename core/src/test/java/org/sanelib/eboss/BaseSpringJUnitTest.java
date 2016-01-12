@@ -70,7 +70,14 @@ public abstract class BaseSpringJUnitTest {
         variables.put("errors", processError);
 
         String response = null;
+
+        System.out.println("Command:" + command);
+        System.out.println("Process Name:" + processName);
+
         ProcessInstance instance = runtimeService.startProcessInstanceByKey(processName, variables);
+
+        System.out.println("instance:" + instance);
+
         Map<String, VariableInstanceEntity> variableInstances = ((ExecutionEntity) instance).getVariableInstances();
         if(variableInstances.containsKey("result")){
             response = variableInstances.get("result").getValue().toString();
