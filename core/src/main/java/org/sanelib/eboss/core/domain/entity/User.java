@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "app_user")
-public class User extends BaseEntity {
+public class User extends EntityBase {
 
     @Column(name = "username")
     private String username;
