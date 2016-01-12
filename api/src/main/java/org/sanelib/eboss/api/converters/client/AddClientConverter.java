@@ -19,21 +19,21 @@ public class AddClientConverter implements DtoToCommandConverter<ClientDTO> {
         AddClient command= new AddClient();
 
         if(Strings.isNullOrEmpty(dto.getClientId())){
-            processError.addError("common.field.required", "client_id", "domain.customer.client_id");
+            processError.addError("common.field.required", "clientId", "domain.client.clientId");
 
         }else{
             command.setClientId(dto.getClientId());
         }
 
         if(Strings.isNullOrEmpty(dto.getClientSecret())){
-            processError.addError("common.field.required", "client_secret", "domain.customer.client_secret");
+            processError.addError("common.field.required", "clientSecret", "domain.client.clientSecret");
 
         }else{
             command.setClientSecret(dto.getClientSecret());
         }
 
         if(Strings.isNullOrEmpty(dto.getClientName())){
-            processError.addError("common.field.required", "client_name", "domain.customer.client_name");
+            processError.addError("common.field.required", "clientName", "domain.client.clientName");
 
         }else{
             command.setClientName(dto.getClientName());
@@ -42,14 +42,14 @@ public class AddClientConverter implements DtoToCommandConverter<ClientDTO> {
         command.setDescription(dto.getDescription());
 
         if(Strings.isNullOrEmpty(dto.getClientUrl())){
-            processError.addError("common.field.required", "client_url", "domain.customer.client_url");
+            processError.addError("common.field.required", "clientUrl", "domain.client.clientUrl");
 
         }else{
             command.setClientUrl(dto.getClientUrl());
         }
 
         if(Strings.isNullOrEmpty(dto.getClientType())){
-            processError.addError("common.field.required", "client_type", "domain.customer.client_type");
+            processError.addError("common.field.required", "clientType", "domain.client.clientType");
 
         }else{
             command.setClientType(dto.getClientType());
@@ -58,11 +58,11 @@ public class AddClientConverter implements DtoToCommandConverter<ClientDTO> {
         command.setScope(dto.getScope());
         command.setRedirectUri(dto.getRedirectUri());
 
-        if(Strings.isNullOrEmpty(dto.getRegdate())){
-            processError.addError("common.field.required", "regdate", "domain.customer.regdate");
+        if(Strings.isNullOrEmpty(dto.getRegistrationDate())){
+            processError.addError("common.field.required", "registrationDate", "domain.client.registrationDate");
 
         }else{
-            command.setRegdate(DateHelper.fromDateString((dto.getRegdate())));
+            command.setRegistrationDate(DateHelper.fromDateString((dto.getRegistrationDate())));
         }
 
         return command;
