@@ -7,16 +7,19 @@ import org.activiti.engine.impl.persistence.entity.VariableInstanceEntity;
 import org.activiti.engine.impl.pvm.PvmException;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.sanelib.eboss.api.converters.DtoToCommandConverter;
+import org.sanelib.eboss.api.converters.ViewToDtoConverter;
 import org.sanelib.eboss.api.dto.BaseDTO;
 import org.sanelib.eboss.core.commands.ProcessCommand;
 import org.sanelib.eboss.core.dao.UnitOfWork;
+import org.sanelib.eboss.core.domain.view.DomainView;
 import org.sanelib.eboss.core.exceptions.AppException;
 import org.sanelib.eboss.core.exceptions.ProcessError;
+import org.sanelib.eboss.core.service.ViewServiceBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public abstract class ApiServiceBase {
 
@@ -70,5 +73,20 @@ public abstract class ApiServiceBase {
             throw exception;
         }
         return response;
+    }
+
+    @SuppressWarnings("unchecked")
+    protected List fetchAll(String viewName) throws Throwable {
+
+        String converterName = viewName + "Converter";
+        String serviceName = viewName + "Service";
+
+        ViewToDtoConverter converter = (ViewToDtoConverter) ctx.getBean(converterName);
+        ViewServiceBase service = (ViewServiceBase) ctx.getBean(serviceName);
+
+        List dtoList = new ArrayList<>();
+        List viewList = service.getAll();
+        dtoList.addAll((Collection) viewList.stream().map(employee -> converter.convert((DomainView) employee)).collect(Collectors.toList()));
+        return dtoList;
     }
 }

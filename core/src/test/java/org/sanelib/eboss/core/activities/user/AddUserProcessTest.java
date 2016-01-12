@@ -1,7 +1,7 @@
 package org.sanelib.eboss.core.activities.user;
 
 import org.junit.Test;
-import org.sanelib.eboss.BaseSpringJUnitTest;
+import org.sanelib.eboss.EntityIntegrationTestBase;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.sanelib.eboss.core.commands.user.AddUser;
 import org.sanelib.eboss.core.domain.entity.User;
@@ -9,7 +9,7 @@ import org.sanelib.eboss.core.domain.entity.User;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 
-public class AddUserProcessTest extends BaseSpringJUnitTest{
+public class AddUserProcessTest extends EntityIntegrationTestBase {
 
     @Test
     public void TestAddUserProcess() throws Throwable {

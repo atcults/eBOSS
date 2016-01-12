@@ -29,10 +29,7 @@ import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = CoreTestMain.class)
-public abstract class BaseSpringJUnitTest {
-
-    @Autowired
-    private ApplicationContext context;
+public abstract class EntityIntegrationTestBase {
 
     @Autowired
     private AppProperties appProperties;
@@ -102,6 +99,8 @@ public abstract class BaseSpringJUnitTest {
 
     public void persist(EntityBase entity) {
         this.unitOfWork.getCurrentSession().save(entity);
+        this.unitOfWork.flush();
+        this.unitOfWork.clear();
     }
 }
 

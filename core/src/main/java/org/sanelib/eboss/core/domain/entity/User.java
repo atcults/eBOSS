@@ -3,11 +3,12 @@ package org.sanelib.eboss.core.domain.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "app_user")
-public class User extends EntityBase {
+public class User extends BaseEntity {
 
     @Column(name = "username")
     private String username;

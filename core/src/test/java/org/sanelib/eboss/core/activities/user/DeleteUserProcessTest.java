@@ -1,14 +1,14 @@
 package org.sanelib.eboss.core.activities.user;
 
 import org.junit.Test;
-import org.sanelib.eboss.BaseSpringJUnitTest;
+import org.sanelib.eboss.EntityIntegrationTestBase;
 import org.sanelib.eboss.core.activities.ActivitiProcessConstants;
 import org.sanelib.eboss.core.commands.user.DeleteUser;
 import org.sanelib.eboss.core.domain.entity.User;
 
 import static org.junit.Assert.assertNull;
 
-public class DeleteUserProcessTest extends BaseSpringJUnitTest {
+public class DeleteUserProcessTest extends EntityIntegrationTestBase {
 
     @Test
     public void testDeleteUserSuccess() throws Throwable {
