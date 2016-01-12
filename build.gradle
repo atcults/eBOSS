@@ -53,7 +53,9 @@ subprojects {
 
         testLogging.showStandardStreams = true
 
-        maxParallelForks = Runtime.runtime.availableProcessors() / 2
+        forkEvery = 10
+        maxParallelForks = 1
+        //maxParallelForks = Runtime.runtime.availableProcessors() / 2
     }
 }
 
